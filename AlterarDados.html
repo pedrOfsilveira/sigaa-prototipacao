@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGAA ALTERAR DADOS</title>
+</head>
+<body>
+    <!-- <header> msm header q todos tem</header>-->
+    <div> <!--class="tananan"--> Dados do discente </div>
+   <div class="DadosDis">
+    Mátricula: XXXXXXXXXX<br>
+    Nome: XXXXX XXXX XXXXX<br>
+    Curso:(Código do curso)<br>
+    Sexo: X    Estado civíl: XXXXXX<br>
+    Data de nascimento:XX/XX/XXXX  Naturalidade: XXXXXX <br>
+    Raça: XXXX <br>
+    Nacionalidade:XXXXXXX Páis: XXXXXX<br>
+    Escola de conclusão do Ensino Médio, Ano de conclusão, Tipo da escola de Ensino Médio: XXXXX,XXXX,XXXXXXX<br>
+    Tipo de necessidades especiais:XXXXXXX <br>
+    Nome dos pais: XXXXX XXXXX XXXXX, XXXXX XXXXX XXXXX<br>
+    <p> Documentos</p>
+    CPF:XXX.XXX.XXX-XX<br>
+    RG: XXXXXXXXXX - XXX/XX/XX <br>
+    Título de eleitor, Zona, Seção,Certificado Militar, Série, Data de expedição do Certificado Militar: XXXXXXXXXX, XXXXX, XXX, XXX, XXXXXXXXX, XXXXX, XX/XX/XXXX <br>
+    Catégoria, UF, Órgão: XXXXX, XXXXX, XXXXX<br>
+    <form action="AlterarDados.html">
+        <p> Endereço</p><br>
+        <label> CEP: </label>
+        <input type="text" id="CEP" value="00000-000"><br>
+        <label for="Logradouro">Logradouro:</label>
+        <select name="Logradouro" id="Logradouro">
+          <option value="NaoInfo">Não Informado</option>
+          <option value="Avenida">Avenida</option>
+          <option value="Bloco">Bloco</option>
+          <option value="Fazenda">Fazenda</option>
+          <option value="Praca">Praça</option>
+          <option value="Rodovia">Rodovia</option>
+          <option value="Rua">Rua</option>
+          <option value="Travessa">Travessa</option>
+         </select>  
+       <input type="text" id="Logradouro" value=""><br>
+       <label> Número: </label> 
+       <input type="number" id="Numero" value="000">     
+       <label> Complemento: </label> 
+       <input type="text" id="Complemento" value=""> <br>
+       <label> Bairro: </label> 
+       <input type="text" id="Bairro" value=""> <br>
+       <label for="UF">UF:</label>
+        <select name="UF" id="UF">
+          <option value="Estados">Estados</option> 
+        </select>
+          <label for="Municipio">Município:</label>
+          <select name="Municipio" id="Município">
+            <option value="Municipios">Municipios</option> 
+        </select><br>
+       <p>Contatos</p><br>
+       <label> Telefone </label>
+       (<input type="number" id="DDD" value="00">)<input type="text" id="Telefone" value="00000-0000"> 
+       <label> Celular </label>
+       (<input type="number" id="DDD2" value="00">)<input type="text" id="Celular" value="00000-0000"><br>
+        <label> Email:</label>
+        <input type="email" id="email" value="email@email.com">
+        <p> Situação socio-econômica</p>
+        <label> Renda familiar (mensal):</label>
+        R$<input type="number" id="renda" value="00.00">
+        <label> Quantidade de membros do grupo familiar </label>
+        <input type="number" id="Familia" value="0"><br>
+        <p>Confirmação de senhas<br>
+            <h2>Confirme Seus Dados</h2></p>
+            <label>Senha:</label>
+            <input type="password" value="">
+        <br>
+        <input type="submit" value="Confirmar">
+        <input type="submit" value="Cancelar">
+    </form>
+
+</div>
+   
+    
+</body>
+</html>
