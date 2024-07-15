@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGAA - Sistema Integrado de Gestão de Atividades Acadêmicas</title>
+    <link rel="stylesheet" href="styles/styles.css">
+</head>
+<body>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        section {
+            margin-bottom: 20px;
+        }
+
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+    </style>
+
+    <header>
+        <h1>SIGAA - Sistema Integrado de Gestão de Atividades Acadêmicas</h1>
+        <nav>
+            <ul>
+                <li><a href="#home">Home</a></li>
+                <li><a href="#login">Login</a></li>
+                <li><a href="#modules">Módulos</a></li>
+                <li><a href="#support">Suporte</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home">
+            <h2>Bem-vindo ao SIGAA</h2>
+            <p>Gerencie suas atividades acadêmicas com facilidade e eficiência.</p>
+        </section>
+
+        <section id="login">
+            <h2>Login</h2>
+            <form id="loginForm">
+                <label for="username">Usuário:</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Senha:</label>
+                <input type="password" id="password" name="password" required>
+                <button type="submit">Entrar</button>
+            </form>
+        </section>
+
+        <section id="modules">
+            <h2>Módulos Disponíveis</h2>
+            <ul>
+                <li><a href="#module1">Ensino Infantil</a></li>
+                <li><a href="#module2">Ensino Fundamental</a></li>
+                <li><a href="#module3">Ensino Médio</a></li>
+                <!-- Add more modules as required -->
+            </ul>
+        </section>
+
+        <section id="support">
+            <h2>Suporte</h2>
+            <p>Precisa de ajuda? <a href="http://www.ufrn.br">Acesse o suporte</a>.</p>
+        </section>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 SIGAA. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const username = document.getElementById('username').value;
+            const password = document.getElementById('password').value;
+
+            // Simple validation
+            if(username && password) {
+                alert(`Login successful for user: ${username}`);
+            } else {
+                alert('Please enter both username and password.');
+            }
+        });
+
+    </script>
+</body>
+</html>

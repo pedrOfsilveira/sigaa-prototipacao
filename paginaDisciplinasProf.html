@@ -1,0 +1,164 @@
+<!-- class.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Details</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <style>
+        /* style.css */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        #class-details {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            padding: 10px;
+            margin: 5px 0;
+            background-color: #f0f0f0;
+            cursor: pointer;
+        }
+
+        ul li:hover {
+            background-color: #e0e0e0;
+        }
+
+        #class-info, #class-menu, #class-topics {
+            margin-top: 20px;
+        }
+
+        #class-info p, #class-menu p, #class-topics p {
+            margin: 5px 0;
+        }
+
+        button {
+            margin-left: 10px;
+            padding: 5px 10px;
+            cursor: pointer;
+        }
+
+        #add-topic-form {
+            margin-top: 20px;
+        }
+    </style>
+    <div id="class-details">
+        <h1 id="class-name">Turma A</h1>
+        <div id="class-info">
+            <p><strong>Local:</strong> Sala 101</p>
+            <p><strong>Horário:</strong> Segunda 10:00-12:00</p>
+            <p><strong>Chat:</strong> chatA</p>
+        </div>
+        <div id="class-menu">
+            <h2>Menu Virtual</h2>
+            <p>Item 1</p>
+            <p>Item 2</p>
+        </div>
+        <div id="class-topics">
+            <h2>Tópicos de Aula</h2>
+            <ul id="topics-list">
+                <li>Topic 1 <button class="hide-btn">Esconder</button> <button class="delete-btn">Excluir</button></li>
+                <li>Topic 2 <button class="hide-btn">Esconder</button> <button class="delete-btn">Excluir</button></li>
+                <!-- Add more topics as needed -->
+            </ul>
+            <button id="add-topic-btn">Adicionar Tópico</button>
+        </div>
+        <div id="add-topic-form" style="display: none;">
+            <h3>Adicionar Tópico</h3>
+            <label for="topic-input">Novo Tópico:</label>
+            <input type="text" id="topic-input">
+            <button id="confirm-add-topic">Confirmar</button>
+        </div>
+    </div>
+
+    <script>
+        // class.js
+        document.addEventListener('DOMContentLoaded', () => {
+            // Simulating class data since the page is standalone
+            const selectedClass = {
+                name: 'Turma A',
+                location: 'Sala 101',
+                schedule: 'Segunda 10:00-12:00',
+                chat: 'chatA',
+                virtualMenu: ['Item 1', 'Item 2'],
+                lessonTopics: ['Topic 1', 'Topic 2']
+            };
+
+            // Setting class details
+            document.getElementById('class-name').textContent = selectedClass.name;
+            document.getElementById('class-location').textContent = selectedClass.location;
+            document.getElementById('class-schedule').textContent = selectedClass.schedule;
+            document.getElementById('class-chat').textContent = selectedClass.chat;
+
+            // Displaying virtual menu
+            const classMenuDiv = document.getElementById('class-menu');
+            selectedClass.virtualMenu.forEach(item => {
+                const p = document.createElement('p');
+                p.textContent = item;
+                classMenuDiv.appendChild(p);
+            });
+
+            // Displaying lesson topics
+            const topicsList = document.getElementById('topics-list');
+            selectedClass.lessonTopics.forEach(topic => {
+                const li = document.createElement('li');
+                li.textContent = topic;
+                li.innerHTML += ' <button class="hide-btn">Esconder</button> <button class="delete-btn">Excluir</button>';
+                topicsList.appendChild(li);
+            });
+
+            // Add topic button functionality
+            const addTopicBtn = document.getElementById('add-topic-btn');
+            const addTopicForm = document.getElementById('add-topic-form');
+            const topicInput = document.getElementById('topic-input');
+            const confirmAddTopicBtn = document.getElementById('confirm-add-topic');
+
+            addTopicBtn.addEventListener('click', () => {
+                addTopicForm.style.display = 'block';
+            });
+
+            confirmAddTopicBtn.addEventListener('click', () => {
+                const newTopic = topicInput.value;
+                if (newTopic) {
+                    const li = document.createElement('li');
+                    li.textContent = newTopic;
+                    li.innerHTML += ' <button class="hide-btn">Esconder</button> <button class="delete-btn">Excluir</button>';
+                    topicsList.appendChild(li);
+                    topicInput.value = '';
+                    addTopicForm.style.display = 'none';
+                }
+            });
+
+            // Event delegation for hide and delete buttons
+            topicsList.addEventListener('click', (e) => {
+                if (e.target.classList.contains('hide-btn')) {
+                    e.target.parentElement.style.display = 'none';
+                } else if (e.target.classList.contains('delete-btn')) {
+                    topicsList.removeChild(e.target.parentElement);
+                }
+            });
+        });
+
+
+    </script>
+</body>
+</html>
