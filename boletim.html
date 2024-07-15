@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Emissão de Registros Acadêmicos</title>
+</head>
+<body>
+    <style>
+    body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      
+      .container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 400px;
+        text-align: center;
+      }
+      
+      h1 {
+        margin-bottom: 20px;
+      }
+      
+      form {
+        margin-bottom: 20px;
+      }
+      
+      label {
+        display: block;
+        margin-bottom: 8px;
+      }
+      
+      select {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 16px;
+      }
+      
+      button {
+        padding: 10px 15px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      
+      button:hover {
+        background-color: #0056b3;
+      }
+      
+      #record-display {
+        text-align: left;
+      }
+      </style>
+      <script>document.addEventListener('DOMContentLoaded', function() {
+        document.getElementById('record-form').addEventListener('submit', function(event) {
+          event.preventDefault();
+          
+          const recordType = document.getElementById('record-type').value;
+          let recordContent = '';
+      
+          switch(recordType) {
+            case 'boletim':
+              recordContent = `
+                <h2>Boletim</h2>
+                <p>Nome: João Silva</p>
+                <p>Matrícula: 123456</p>
+                <p>Matemática: 8.0</p>
+                <p>Português: 7.5</p>
+                <p>Ciências: 9.0</p>
+                <p>Frequência: 95%</p>
+              `;
+              break;
+            case 'atestado-matricula':
+              recordContent = `
+                <h2>Atestado de Matrícula</h2>
+                <p>Nome: João Silva</p>
+                <p>Matrícula: 123456</p>
+                <p>Curso: Engenharia de Computação</p>
+                <p>Horários: Segunda a Sexta, 08:00 - 12:00</p>
+              `;
+              break;
+            case 'historico':
+              recordContent = `
+                <h2>Histórico</h2>
+                <p>Nome: João Silva</p>
+                <p>Matrícula: 123456</p>
+                <p>Curso: Engenharia de Computação</p>
+                <p>Disciplinas Cursadas:</p>
+                <ul>
+                  <li>Matemática Discreta - Aprovado</li>
+                  <li>Algoritmos e Estruturas de Dados - Aprovado</li>
+                </ul>
+                <p>Disciplinas Pendentes:</p>
+                <ul>
+                  <li>Compiladores</li>
+                  <li>Sistemas Operacionais</li>
+                </ul>
+              `;
+              break;
+            case 'historico-ementas':
+              recordContent = `
+                <h2>Histórico com Ementas</h2>
+                <p>Nome: João Silva</p>
+                <p>Matrícula: 123456</p>
+                <p>Curso: Engenharia de Computação</p>
+                <p>Disciplinas Cursadas:</p>
+                <ul>
+                  <li>
+                    Matemática Discreta - Aprovado
+                    <p>Ementa: Estudo de conjuntos, relações, funções, grafos e lógica matemática.</p>
+                  </li>
+                  <li>
+                    Algoritmos e Estruturas de Dados - Aprovado
+                    <p>Ementa: Introdução aos algoritmos, estruturas de dados básicas e complexidade de algoritmos.</p>
+                  </li>
+                </ul>
+                <p>Disciplinas Pendentes:</p>
+                <ul>
+                  <li>Compiladores
+                    <p>Ementa: Princípios de construção de compiladores.</p>
+                  </li>
+                  <li>Sistemas Operacionais
+                    <p>Ementa: Conceitos básicos de sistemas operacionais, gerenciamento de processos e memória.</p>
+                  </li>
+                </ul>
+              `;
+              break;
+            case 'declaracao-vinculo':
+              recordContent = `
+                <h2>Declaração de Vínculo</h2>
+                <p>Nome: João Silva</p>
+                <p>Matrícula: 123456</p>
+                <p>Curso: Engenharia de Computação</p>
+              `;
+              break;
+            default:
+              recordContent = '<p>Selecione um tipo de registro válido.</p>';
+          }
+      
+          document.getElementById('record-display').innerHTML = recordContent;
+        });
+      });
+      </script>
+  <div class="container">
+    <h1>Emissão de Registros Acadêmicos</h1>
+    <form id="record-form">
+      <label for="record-type">Selecione o Tipo de Registro:</label>
+      <select id="record-type">
+        <option value="boletim">Boletim</option>
+        <option value="atestado-matricula">Atestado de Matrícula</option>
+        <option value="historico">Histórico</option>
+        <option value="historico-ementas">Histórico com Ementas</option>
+        <option value="declaracao-vinculo">Declaração de Vínculo</option>
+      </select>
+      <button type="submit">Emitir Registro</button>
+    </form>
+    <div id="record-display"></div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

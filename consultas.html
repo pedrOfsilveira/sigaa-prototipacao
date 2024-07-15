@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Consultas Gerais</title>
+
+</head>
+<body>
+<style>body {
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+    margin: 0;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+  }
+  
+  .container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    width: 400px;
+    text-align: center;
+  }
+  
+  h1 {
+    margin-bottom: 20px;
+  }
+  
+  form {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    display: block;
+    margin-bottom: 8px;
+  }
+  
+  select, input {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 16px;
+  }
+  
+  button {
+    padding: 10px 15px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 4px;
+    cursor: pointer;
+  }
+  
+  button:hover {
+    background-color: #0056b3;
+  }
+  
+  #query-results {
+    text-align: left;
+  }
+  </style>
+  <div class="container">
+    <h1>Consultas Gerais</h1>
+    <form id="query-form">
+      <label for="query-type">Selecione o Tipo de Consulta:</label>
+      <select id="query-type">
+        <option value="courses">Cursos</option>
+        <option value="components">Componentes Curriculares</option>
+        <option value="classes">Turmas</option>
+        <option value="units">Unidades Acadêmicas</option>
+      </select>
+      
+      <div id="query-fields">
+        <!-- Dynamic fields will be inserted here based on the query type -->
+      </div>
+      
+      <button type="submit">Consultar</button>
+    </form>
+    <div id="query-results"></div>
+  </div>
+  <script>document.addEventListener('DOMContentLoaded', function() {
+    const queryForm = document.getElementById('query-form');
+    const queryTypeSelect = document.getElementById('query-type');
+    const queryFieldsDiv = document.getElementById('query-fields');
+    const queryResultsDiv = document.getElementById('query-results');
+  
+    function updateQueryFields() {
+      const queryType = queryTypeSelect.value;
+      let fieldsHTML = '';
+        
+      switch(queryType) {
+        case 'courses':
+          fieldsHTML = `
+            <label for="course-name">Nome do Curso:</label>
+            <input type="text" id="course-name" name="course-name">
+            <label for="course-code">Código do Curso:</label>
+            <input type="text" id="course-code" name="course-code">
+          `;
+          break;
+        case 'components':
+          fieldsHTML = `
+            <label for="component-name">Nome do Componente:</label>
+            <input type="text" id="component-name" name="component-name">
+            <label for="component-code">Código do Componente:</label>
+            <input type="text" id="component-code" name="component-code">
+          `;
+          break;
+        case 'classes':
+          fieldsHTML = `
+            <label for="class-name">Nome da Turma:</label>
+            <input type="text" id="class-name" name="class-name">
+            <label for="class-schedule">Horário da Turma:</label>
+            <input type="text" id="class-schedule" name="class-schedule">
+          `;
+          break;
+        case 'units':
+          fieldsHTML = `
+            <label for="unit-name">Nome da Unidade:</label>
+            <input type="text" id="unit-name" name="unit-name">
+            <label for="unit-code">Código da Unidade:</label>
+            <input type="text" id="unit-code" name="unit-code">
+          `;
+          break;
+        default:
+          fieldsHTML = '';
+      }
+  
+      queryFieldsDiv.innerHTML = fieldsHTML;
+    }
+  
+    queryTypeSelect.addEventListener('change', updateQueryFields);
+    updateQueryFields();
+  
+    queryForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+  
+      const queryType = queryTypeSelect.value;
+      let resultsHTML = '';
+  
+      switch(queryType) {
+        case 'courses':
+          resultsHTML = `
+            <h2>Resultados da Consulta: Cursos</h2>
+            <p>Nome do Curso: Engenharia de Computação</p>
+            <p>Código do Curso: EC101</p>
+            <p>Descrição: Curso focado em software e hardware.</p>
+          `;
+          break;
+        case 'components':
+          resultsHTML = `
+            <h2>Resultados da Consulta: Componentes Curriculares</h2>
+            <p>Nome do Componente: Algoritmos</p>
+            <p>Código do Componente: AL101</p>
+            <p>Descrição: Estudo de algoritmos e estruturas de dados.</p>
+          `;
+          break;
+        case 'classes':
+          resultsHTML = `
+            <h2>Resultados da Consulta: Turmas</h2>
+            <p>Nome da Turma: Turma A</p>
+            <p>Horário da Turma: Segunda e Quarta, 08:00 - 10:00</p>
+            <p>Professor: Dr. Silva</p>
+          `;
+          break;
+        case 'units':
+          resultsHTML = `
+            <h2>Resultados da Consulta: Unidades Acadêmicas</h2>
+            <p>Nome da Unidade: Instituto de Computação</p>
+            <p>Código da Unidade: IC001</p>
+            <p>Descrição: Unidade responsável pelos cursos de computação.</p>
+          `;
+          break;
+        default:
+          resultsHTML = '<p>Selecione um tipo de consulta válido.</p>';
+      }
+  
+      queryResultsDiv.innerHTML = resultsHTML;
+    });
+  });
+  </script>
+</body>
+</html>

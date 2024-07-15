@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerenciamento de Recursos Acadêmicos</title>
+</head>
+<body>
+    <style>body {
+        font-family: Arial, sans-serif;
+        background-color: #f0f0f0;
+        margin: 0;
+        padding: 0;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+      }
+      
+      .container {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        width: 400px;
+        text-align: center;
+      }
+      
+      h1 {
+        margin-bottom: 20px;
+      }
+      
+      form {
+        margin-bottom: 20px;
+      }
+      
+      label {
+        display: block;
+        margin-bottom: 8px;
+      }
+      
+      select, input {
+        width: 100%;
+        padding: 8px;
+        margin-bottom: 16px;
+      }
+      
+      button {
+        padding: 10px 15px;
+        background-color: #007bff;
+        color: #fff;
+        border: none;
+        border-radius: 4px;
+        cursor: pointer;
+      }
+      
+      button:hover {
+        background-color: #0056b3;
+      }
+      
+      #resource-results {
+        text-align: left;
+      }
+        </style>
+  <div class="container">
+    <h1>Gerenciamento de Recursos Acadêmicos</h1>
+    <form id="resource-form">
+      <label for="resource-type">Selecione o Tipo de Recurso:</label>
+      <select id="resource-type">
+        <option value="academic-guidance">Orientação Acadêmica</option>
+        <option value="graduate-guidance">Orientação Pós-graduação</option>
+        <option value="internships">Estágios</option>
+        <option value="pap">PAP</option>
+        <option value="classes">Turmas</option>
+        <option value="projects">Projetos</option>
+        <option value="consultations">Consultas</option>
+      </select>
+      
+      <div id="resource-fields">
+        <!-- Dynamic fields will be inserted here based on the resource type -->
+      </div>
+      
+      <button type="submit">Executar</button>
+    </form>
+    <div id="resource-results"></div>
+  </div>
+  <script>document.addEventListener('DOMContentLoaded', function() {
+    const resourceForm = document.getElementById('resource-form');
+    const resourceTypeSelect = document.getElementById('resource-type');
+    const resourceFieldsDiv = document.getElementById('resource-fields');
+    const resourceResultsDiv = document.getElementById('resource-results');
+  
+    function updateResourceFields() {
+      const resourceType = resourceTypeSelect.value;
+      let fieldsHTML = '';
+  
+      switch(resourceType) {
+        case 'academic-guidance':
+        case 'graduate-guidance':
+          fieldsHTML = `
+            <label for="guidance-topic">Tópico da Orientação:</label>
+            <input type="text" id="guidance-topic" name="guidance-topic">
+          `;
+          break;
+        case 'internships':
+          fieldsHTML = `
+            <label for="internship-supervision">Supervisão de Estágio:</label>
+            <input type="text" id="internship-supervision" name="internship-supervision">
+          `;
+          break;
+        case 'pap':
+          fieldsHTML = `
+            <label for="pap-details">Detalhes do PAP:</label>
+            <input type="text" id="pap-details" name="pap-details">
+          `;
+          break;
+        case 'classes':
+          fieldsHTML = `
+            <label for="class-action">Ação na Turma:</label>
+            <select id="class-action" name="class-action">
+              <option value="register-grades">Cadastrar Nota</option>
+              <option value="view-course-plan">Ver Plano de Curso</option>
+              <option value="view-schedule">Ver Grade de Horário</option>
+              <option value="consult-classes">Consultar Turmas</option>
+            </select>
+          `;
+          break;
+        case 'projects':
+          fieldsHTML = `
+            <label for="project-details">Detalhes do Projeto:</label>
+            <input type="text" id="project-details" name="project-details">
+          `;
+          break;
+        case 'consultations':
+          fieldsHTML = `
+            <label for="consultation-type">Tipo de Consulta:</label>
+            <select id="consultation-type" name="consultation-type">
+              <option value="classes">Turmas</option>
+              <option value="courses">Cursos</option>
+              <option value="subjects">Disciplinas</option>
+              <option value="curricular-structure">Estrutura Curricular</option>
+              <option value="academic-units">Unidades Acadêmicas</option>
+              <option value="academic-calendar">Calendário Acadêmico</option>
+            </select>
+          `;
+          break;
+        default:
+          fieldsHTML = '';
+      }
+  
+      resourceFieldsDiv.innerHTML = fieldsHTML;
+    }
+  
+    resourceTypeSelect.addEventListener('change', updateResourceFields);
+    updateResourceFields();
+  
+    resourceForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+  
+      const resourceType = resourceTypeSelect.value;
+      let resultsHTML = '';
+  
+      switch(resourceType) {
+        case 'academic-guidance':
+          resultsHTML = `
+            <h2>Orientação Acadêmica</h2>
+            <p>Tópico da Orientação: Orientação para escolha de disciplinas.</p>
+          `;
+          break;
+        case 'graduate-guidance':
+          resultsHTML = `
+            <h2>Orientação Pós-graduação</h2>
+            <p>Tópico da Orientação: Orientação para escolha de curso de mestrado.</p>
+          `;
+          break;
+        case 'internships':
+          resultsHTML = `
+            <h2>Supervisão de Estágios</h2>
+            <p>Detalhes da Supervisão: Supervisão de estágios em empresas de tecnologia.</p>
+          `;
+          break;
+        case 'pap':
+          resultsHTML = `
+            <h2>PAP</h2>
+            <p>Detalhes do PAP: Programa de Acompanhamento Pedagógico para alunos com dificuldades.</p>
+          `;
+          break;
+        case 'classes':
+          const classAction = document.getElementById('class-action').value;
+          if (classAction === 'register-grades') {
+            resultsHTML = `
+              <h2>Cadastrar Nota</h2>
+              <p>Notas cadastradas com sucesso para a turma XYZ.</p>
+            `;
+          } else if (classAction === 'view-course-plan') {
+            resultsHTML = `
+              <h2>Plano de Curso</h2>
+              <p>Plano de curso para a disciplina Algoritmos e Estruturas de Dados.</p>
+            `;
+          } else if (classAction === 'view-schedule') {
+            resultsHTML = `
+              <h2>Grade de Horário</h2>
+              <p>Grade de horário da turma de Engenharia de Computação.</p>
+            `;
+          } else if (classAction === 'consult-classes') {
+            resultsHTML = `
+              <h2>Consultar Turmas</h2>
+              <p>Turmas consultadas com sucesso.</p>
+            `;
+          }
+          break;
+        case 'projects':
+          resultsHTML = `
+            <h2>Projetos</h2>
+            <p>Detalhes do Projeto: Desenvolvimento de um sistema de gerenciamento acadêmico.</p>
+          `;
+          break;
+        case 'consultations':
+          const consultationType = document.getElementById('consultation-type').value;
+          if (consultationType === 'classes') {
+            resultsHTML = `
+              <h2>Consulta de Turmas</h2>
+              <p>Turmas disponíveis para o semestre atual.</p>
+            `;
+          } else if (consultationType === 'courses') {
+            resultsHTML = `
+              <h2>Consulta de Cursos</h2>
+              <p>Lista de cursos disponíveis na instituição.</p>
+            `;
+          } else if (consultationType === 'subjects') {
+            resultsHTML = `
+              <h2>Consulta de Disciplinas</h2>
+              <p>Lista de disciplinas oferecidas no curso de Engenharia de Computação.</p>
+            `;
+          } else if (consultationType === 'curricular-structure') {
+            resultsHTML = `
+              <h2>Consulta da Estrutura Curricular</h2>
+              <p>Estrutura curricular do curso de Engenharia de Computação.</p>
+            `;
+          } else if (consultationType === 'academic-units') {
+            resultsHTML = `
+              <h2>Consulta de Unidades Acadêmicas</h2>
+              <p>Lista de unidades acadêmicas da instituição.</p>
+            `;
+          } else if (consultationType === 'academic-calendar') {
+            resultsHTML = `
+              <h2>Consulta do Calendário Acadêmico</h2>
+              <p>Calendário acadêmico para o ano letivo atual.</p>
+            `;
+          }
+          break;
+        default:
+          resultsHTML = '<p>Selecione um tipo de recurso válido.</p>';
+      }
+  
+      resourceResultsDiv.innerHTML = resultsHTML;
+    });
+  });
+  </script>
+</body>
+</html>
