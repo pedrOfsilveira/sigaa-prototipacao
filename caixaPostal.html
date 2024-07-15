@@ -1,0 +1,210 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mailbox</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <style>
+        /* style.css */
+        #mailbox {
+            width: 80%;
+            margin: auto;
+        }
+
+        #controls {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        #controls button, #controls input {
+            padding: 10px;
+            margin: 5px;
+        }
+
+        #messages {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #messages ul {
+            list-style: none;
+            padding: 0;
+            width: 45%;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.4);
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        form input, form textarea, form button {
+            margin: 10px 0;
+            padding: 10px;
+        }
+
+    </style>
+    <div id="mailbox">
+        <div id="controls">
+            <button id="send-btn">Enviar Mensagem</button>
+            <button id="delete-btn">Apagar Mensagem</button>
+            <input type="text" id="search-box" placeholder="Buscar Mensagens">
+            <button id="search-btn">Buscar</button>
+        </div>
+        <div id="messages">
+            <h2>Caixa de Entrada</h2>
+            <ul id="inbox">
+                <!-- Messages will be dynamically inserted here -->
+            </ul>
+            <h2>Caixa de Saída</h2>
+            <ul id="outbox">
+                <!-- Messages will be dynamically inserted here -->
+            </ul>
+        </div>
+    </div>
+
+    <!-- Modal for sending message -->
+    <div id="send-message-modal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Enviar Mensagem</h2>
+            <form id="send-message-form">
+                <label for="recipient">Destinatário:</label>
+                <input type="text" id="recipient" name="recipient" required>
+                <label for="subject">Assunto:</label>
+                <input type="text" id="subject" name="subject" required>
+                <label for="message">Mensagem:</label>
+                <textarea id="message" name="message" required></textarea>
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+    </div>
+
+    <script>
+        // app.js
+        document.addEventListener('DOMContentLoaded', () => {
+            const sendBtn = document.getElementById('send-btn');
+            const deleteBtn = document.getElementById('delete-btn');
+            const searchBtn = document.getElementById('search-btn');
+            const searchBox = document.getElementById('search-box');
+            const sendMessageModal = document.getElementById('send-message-modal');
+            const closeModal = document.querySelector('.close');
+
+            // Function to display messages (dummy data for now)
+            const displayMessages = () => {
+                const inbox = document.getElementById('inbox');
+                const outbox = document.getElementById('outbox');
+
+                // Dummy data
+                const messages = [
+                    {id: 1, subject: 'Hello', sender: 'Alice', recipient: 'Bob', date: '2024-07-15', content: 'Hi Bob!'},
+                    {id: 2, subject: 'Meeting', sender: 'Bob', recipient: 'Alice', date: '2024-07-14', content: 'Let\'s meet tomorrow.'},
+                    // Add more messages as needed
+                ];
+
+                inbox.innerHTML = '';
+                outbox.innerHTML = '';
+
+                messages.forEach(msg => {
+                    const li = document.createElement('li');
+                    li.textContent = `${msg.subject} - ${msg.sender} - ${msg.date}`;
+                    li.dataset.id = msg.id;
+                    li.addEventListener('click', () => {
+                        alert(`Message from ${msg.sender}:\n\n${msg.content}`);
+                    });
+
+                    if (msg.sender === 'Alice') {
+                        inbox.appendChild(li);
+                    } else {
+                        outbox.appendChild(li);
+                    }
+                });
+            };
+
+            displayMessages();
+
+            // Show modal for sending message
+            sendBtn.addEventListener('click', () => {
+                sendMessageModal.style.display = 'block';
+            });
+
+            // Close modal
+            closeModal.addEventListener('click', () => {
+                sendMessageModal.style.display = 'none';
+            });
+
+            // Send message form submission
+            const sendMessageForm = document.getElementById('send-message-form');
+            sendMessageForm.addEventListener('submit', (e) => {
+                e.preventDefault();
+                const recipient = e.target.recipient.value;
+                const subject = e.target.subject.value;
+                const message = e.target.message.value;
+                
+                // Here you would add the code to actually send the message
+                console.log(`Sending message to ${recipient}: ${subject} - ${message}`);
+
+                sendMessageModal.style.display = 'none';
+            });
+
+            // Search messages
+            searchBtn.addEventListener('click', () => {
+                const query = searchBox.value.toLowerCase();
+                const messages = document.querySelectorAll('#inbox li, #outbox li');
+
+                messages.forEach(msg => {
+                    if (msg.textContent.toLowerCase().includes(query)) {
+                        msg.style.display = '';
+                    } else {
+                        msg.style.display = 'none';
+                    }
+                });
+            });
+
+            // Delete message (dummy functionality for now)
+            deleteBtn.addEventListener('click', () => {
+                alert('Delete functionality not implemented yet.');
+            });
+        });
+
+    </script>
+</body>
+</html>

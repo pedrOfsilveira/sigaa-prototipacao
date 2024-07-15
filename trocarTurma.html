@@ -1,0 +1,69 @@
+<!-- index.html -->
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Class Page</title>
+</head>
+<body>
+    <style>
+        /* style.css */
+        #navbar {
+            display: flex;
+            justify-content: flex-end;
+            padding: 10px;
+        }
+
+        #switch-class-btn {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        #switch-class-btn:hover {
+            background-color: #0056b3;
+        }
+
+        select, button {
+            margin: 10px 0;
+            padding: 10px;
+        }
+
+    </style>
+    <div id="navbar">
+        <button id="switch-class-btn">Trocar de Turma</button>
+    </div>
+    <div id="class-content">
+        <!-- Class content here -->
+    </div>
+    <script>
+        // app.js
+        document.getElementById('switch-class-btn').addEventListener('click', () => {
+            // Assuming we have a list of classes from an API or predefined list
+            const classes = ['Turma 1', 'Turma 2', 'Turma 3'];
+            const classSelector = document.createElement('select');
+
+            classes.forEach(cls => {
+                const option = document.createElement('option');
+                option.value = cls;
+                option.textContent = cls;
+                classSelector.appendChild(option);
+            });
+
+            const confirmButton = document.createElement('button');
+            confirmButton.textContent = 'Confirmar';
+            confirmButton.addEventListener('click', () => {
+                const selectedClass = classSelector.value;
+                window.location.href = `/class/${selectedClass}`;
+            });
+
+            document.body.appendChild(classSelector);
+            document.body.appendChild(confirmButton);
+        });
+
+    </script>
+</body>
+</html>
