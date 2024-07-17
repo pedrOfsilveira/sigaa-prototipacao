@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIGAA - Sistema Integrado de Gestão de Atividades Acadêmicas</title>
-    <link rel="stylesheet" href="styles/styles.css">
 </head>
 <body>
     <style>
@@ -54,7 +53,31 @@
             bottom: 0;
         }
 
+        .font-buttons {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .font-buttons button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            margin-left: 5px;
+        }
+
+        .font-buttons button:hover {
+            background-color: #45a049;
+        }
     </style>
+</head>
+<body>
+    <div class="font-buttons">
+        <button id="increase-font">A+</button>
+        <button id="decrease-font">A-</button>
+    </div>
 
     <header>
         <h1>SIGAA - Sistema Integrado de Gestão de Atividades Acadêmicas</h1>
@@ -119,6 +142,21 @@
             }
         });
 
+        const increaseFontButton = document.getElementById('increase-font');
+        const decreaseFontButton = document.getElementById('decrease-font');
+        let currentFontSize = 16;
+
+        increaseFontButton.addEventListener('click', function() {
+            currentFontSize += 2;
+            document.body.style.fontSize = `${currentFontSize}px`;
+        });
+
+        decreaseFontButton.addEventListener('click', function() {
+            if (currentFontSize > 10) {
+                currentFontSize -= 2;
+                document.body.style.fontSize = `${currentFontSize}px`;
+            }
+        });
     </script>
 </body>
 </html>
