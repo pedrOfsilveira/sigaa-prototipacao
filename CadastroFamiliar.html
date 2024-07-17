@@ -4,49 +4,189 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>IFRS SIGAA</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        section {
+            margin-bottom: 20px;
+        }
+
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container h2, .form-container h3 {
+            text-align: center;
+            color: #4CAF50;
+        }
+
+        .form-container label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="number"],
+        .form-container input[type="password"],
+        .form-container select {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 20px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+
+        .form-container .button-container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .form-container input[type="submit"] {
+            width: 48%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .form-container input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+    </style>
 </head>
 <body>
-    <h1>  IFRS SIGAA </h1>
-    <h2> Dados para cadastro</h2>
-    <h3> Dados do aluno</h3>
-    Matricula:  <input type=text value=""><br>
-    <label for="Nivel">Nível:</label>
-<select name="Nivel" id="Nivel">
-  <option value="Infantil">Infantil</option>
-  <option value="Fundamental">Fundamental</option>
-  <option value="TecnicoIntegrado">Técnico Integrado</option>
-  <option value="medio">Médio</option>
-</select><br>
-    Nome:  <input type=text value=""><br>
-    <input type="checkbox" id="cpfins" name="cpfins" value="">
-<label for="cpfins">O aluno é estrangeiro e não possui cpf</label><br>
-    CPF:  <input type=text value=""><br>
-    RG:  <input type=Number value=""><br>
-    Data de nascimento:<input type=text value=""><br>
-    ano inicial:  <input type=Number value=""><br>
-    <h3> Dados do familiar do responsavel</h3>
-    Nome:  <input type=text value=""><br>
-    CPF/login:  <input type=text value=""><br>
-    Data de nascimento:<input type=text value=""><br>
-    <label for="grau">Grau de parentesco:</label>
-    <select name="grau" id="grau">
-      <option value="Av1">Avô</option>
-      <option value="Av2">Avó</option>
-      <option value="Filho">filho(a)</option>
-      <option value="Irmao">Irmão(a)</option>
-      <option value="Madastra">Madastra</option>
-      <option value="Mae">Mãe</option>
-      <option value="Outro">Outro</option>
-      <option value="Padrasto">Padrasto</option>
-      <option value="Pai">Pai</option>
-      <option value="Primo">Primo</option>
-      <option value="Sobrinho">Sobrinho</option>
-      <option value="Tia">Tia</option>
-      <option value="Tio">Tio</option>
-    </select><br>
-    <h3> Dados do seu novo usuário</h3>
-    Email:<input type=text value=""><br>
-    Senha:<input type=password value=""><br>
-    Confirmar senha:<input type=password value=""><br>
+    <header>
+        <h1>IFRS SIGAA</h1>
+    </header>
+
+    <main>
+        <section class="form-container">
+            <h2>Dados para cadastro</h2>
+
+            <h3>Dados do aluno</h3>
+            <label for="matricula">Matrícula:</label>
+            <input type="text" id="matricula" name="matricula" value=""><br>
+            
+            <label for="Nivel">Nível:</label>
+            <select name="Nivel" id="Nivel">
+                <option value="Infantil">Infantil</option>
+                <option value="Fundamental">Fundamental</option>
+                <option value="TecnicoIntegrado">Técnico Integrado</option>
+                <option value="medio">Médio</option>
+            </select><br>
+
+            <label for="nomeAluno">Nome:</label>
+            <input type="text" id="nomeAluno" name="nomeAluno" value=""><br>
+
+            
+            <label for="cpfins">O aluno é estrangeiro e não possui CPF: <input type="checkbox" id="cpfins" name="cpfins" value=""></label><br>
+
+            <label for="cpfAluno">CPF:</label>
+            <input type="text" id="cpfAluno" name="cpfAluno" value=""><br>
+
+            <label for="rgAluno">RG:</label>
+            <input type="number" id="rgAluno" name="rgAluno" value=""><br>
+
+            <label for="nascimentoAluno">Data de nascimento:</label>
+            <input type="text" id="nascimentoAluno" name="nascimentoAluno" value=""><br>
+
+            <label for="anoInicial">Ano inicial:</label>
+            <input type="number" id="anoInicial" name="anoInicial" value=""><br>
+
+            <h3>Dados do familiar do responsável</h3>
+            <label for="nomeResponsavel">Nome:</label>
+            <input type="text" id="nomeResponsavel" name="nomeResponsavel" value=""><br>
+
+            <label for="cpfResponsavel">CPF/Login:</label>
+            <input type="text" id="cpfResponsavel" name="cpfResponsavel" value=""><br>
+
+            <label for="nascimentoResponsavel">Data de nascimento:</label>
+            <input type="text" id="nascimentoResponsavel" name="nascimentoResponsavel" value=""><br>
+
+            <label for="grau">Grau de parentesco:</label>
+            <select name="grau" id="grau">
+                <option value="Av1">Avô</option>
+                <option value="Av2">Avó</option>
+                <option value="Filho">Filho(a)</option>
+                <option value="Irmao">Irmão(a)</option>
+                <option value="Madastra">Madastra</option>
+                <option value="Mae">Mãe</option>
+                <option value="Outro">Outro</option>
+                <option value="Padrasto">Padrasto</option>
+                <option value="Pai">Pai</option>
+                <option value="Primo">Primo</option>
+                <option value="Sobrinho">Sobrinho</option>
+                <option value="Tia">Tia</option>
+                <option value="Tio">Tio</option>
+            </select><br>
+
+            <h3>Dados do seu novo usuário</h3>
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email" value=""><br>
+
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" name="senha" value=""><br>
+
+            <label for="confirmarSenha">Confirmar senha:</label>
+            <input type="password" id="confirmarSenha" name="confirmarSenha" value=""><br>
+
+            <div class="button-container">
+                <input type="submit" value="Enviar">
+                <input type="submit" value="Cancelar">
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2024 IFRS SIGAA. Todos os direitos reservados.
+    </footer>
+</body>
 </html>
