@@ -5,79 +5,268 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIGAA ALTERAR DADOS</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        section {
+            margin-bottom: 20px;
+        }
+
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container h2 {
+            text-align: center;
+            color: #4CAF50;
+        }
+
+        .form-container label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="number"],
+        .form-container input[type="email"],
+        .form-container input[type="password"],
+        .form-container select {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 20px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+
+        .form-container .button-container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .form-container input[type="submit"] {
+            width: 48%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .form-container input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .form-container p {
+            font-weight: bold;
+            margin: 20px 0 10px;
+        }
+    </style>
 </head>
 <body>
-    <!-- <header> msm header q todos tem</header>-->
-    <div> <!--class="tananan"--> Dados do discente </div>
-   <div class="DadosDis">
-    Mátricula: XXXXXXXXXX<br>
-    Nome: XXXXX XXXX XXXXX<br>
-    Curso:(Código do curso)<br>
-    Sexo: X    Estado civíl: XXXXXX<br>
-    Data de nascimento:XX/XX/XXXX  Naturalidade: XXXXXX <br>
-    Raça: XXXX <br>
-    Nacionalidade:XXXXXXX Páis: XXXXXX<br>
-    Escola de conclusão do Ensino Médio, Ano de conclusão, Tipo da escola de Ensino Médio: XXXXX,XXXX,XXXXXXX<br>
-    Tipo de necessidades especiais:XXXXXXX <br>
-    Nome dos pais: XXXXX XXXXX XXXXX, XXXXX XXXXX XXXXX<br>
-    <p> Documentos</p>
-    CPF:XXX.XXX.XXX-XX<br>
-    RG: XXXXXXXXXX - XXX/XX/XX <br>
-    Título de eleitor, Zona, Seção,Certificado Militar, Série, Data de expedição do Certificado Militar: XXXXXXXXXX, XXXXX, XXX, XXX, XXXXXXXXX, XXXXX, XX/XX/XXXX <br>
-    Catégoria, UF, Órgão: XXXXX, XXXXX, XXXXX<br>
-    <form action="AlterarDados.html">
-        <p> Endereço</p><br>
-        <label> CEP: </label>
-        <input type="text" id="CEP" value="00000-000"><br>
-        <label for="Logradouro">Logradouro:</label>
-        <select name="Logradouro" id="Logradouro">
-          <option value="NaoInfo">Não Informado</option>
-          <option value="Avenida">Avenida</option>
-          <option value="Bloco">Bloco</option>
-          <option value="Fazenda">Fazenda</option>
-          <option value="Praca">Praça</option>
-          <option value="Rodovia">Rodovia</option>
-          <option value="Rua">Rua</option>
-          <option value="Travessa">Travessa</option>
-         </select>  
-       <input type="text" id="Logradouro" value=""><br>
-       <label> Número: </label> 
-       <input type="number" id="Numero" value="000">     
-       <label> Complemento: </label> 
-       <input type="text" id="Complemento" value=""> <br>
-       <label> Bairro: </label> 
-       <input type="text" id="Bairro" value=""> <br>
-       <label for="UF">UF:</label>
-        <select name="UF" id="UF">
-          <option value="Estados">Estados</option> 
-        </select>
-          <label for="Municipio">Município:</label>
-          <select name="Municipio" id="Município">
-            <option value="Municipios">Municipios</option> 
-        </select><br>
-       <p>Contatos</p><br>
-       <label> Telefone </label>
-       (<input type="number" id="DDD" value="00">)<input type="text" id="Telefone" value="00000-0000"> 
-       <label> Celular </label>
-       (<input type="number" id="DDD2" value="00">)<input type="text" id="Celular" value="00000-0000"><br>
-        <label> Email:</label>
-        <input type="email" id="email" value="email@email.com">
-        <p> Situação socio-econômica</p>
-        <label> Renda familiar (mensal):</label>
-        R$<input type="number" id="renda" value="00.00">
-        <label> Quantidade de membros do grupo familiar </label>
-        <input type="number" id="Familia" value="0"><br>
-        <p>Confirmação de senhas<br>
-            <h2>Confirme Seus Dados</h2></p>
-            <label>Senha:</label>
-            <input type="password" value="">
-        <br>
-        <input type="submit" value="Confirmar">
-        <input type="submit" value="Cancelar">
-    </form>
+    <header>
+        <h1>SIGAA ALTERAR DADOS</h1>
+    </header>
 
-</div>
-   
-    
+    <main>
+        <section class="form-container">
+            <h2>Dados do discente</h2>
+            <form action="AlterarDados.html">
+                <label for="matricula">Matrícula:</label>
+                <input type="text" id="matricula" name="matricula" value=""><br>
+
+                <label for="nome">Nome:</label>
+                <input type="text" id="nome" name="nome" value=""><br>
+
+                <label for="curso">Curso:</label>
+                <input type="text" id="curso" name="curso" value="Código do curso"><br>
+
+                <label for="sexo">Sexo:</label>
+                <input type="text" id="sexo" name="sexo" value=""><br>
+
+                <label for="estadoCivil">Estado civil:</label>
+                <input type="text" id="estadoCivil" name="estadoCivil" value=""><br>
+
+                <label for="nascimento">Data de nascimento:</label>
+                <input type="text" id="nascimento" name="nascimento" value=""><br>
+
+                <label for="naturalidade">Naturalidade:</label>
+                <input type="text" id="naturalidade" name="naturalidade" value=""><br>
+
+                <label for="raca">Raça:</label>
+                <input type="text" id="raca" name="raca" value=""><br>
+
+                <label for="nacionalidade">Nacionalidade:</label>
+                <input type="text" id="nacionalidade" name="nacionalidade" value=""><br>
+
+                <label for="pais">País:</label>
+                <input type="text" id="pais" name="pais" value=""><br>
+
+                <label for="escolaConclusao">Escola de conclusão do Ensino Médio:</label>
+                <input type="text" id="escolaConclusao" name="escolaConclusao" value=""><br>
+
+                <label for="anoConclusao">Ano de conclusão:</label>
+                <input type="text" id="anoConclusao" name="anoConclusao" value=""><br>
+
+                <label for="tipoEscola">Tipo da escola de Ensino Médio:</label>
+                <input type="text" id="tipoEscola" name="tipoEscola" value=""><br>
+
+                <label for="necessidadesEspeciais">Tipo de necessidades especiais:</label>
+                <input type="text" id="necessidadesEspeciais" name="necessidadesEspeciais" value=""><br>
+
+                <label for="nomePai">Nome do pai:</label>
+                <input type="text" id="nomePai" name="nomePai" value=""><br>
+
+                <label for="nomeMae">Nome da mãe:</label>
+                <input type="text" id="nomeMae" name="nomeMae" value=""><br>
+
+                <p>Documentos</p>
+                <label for="cpf">CPF:</label>
+                <input type="text" id="cpf" name="cpf" value=""><br>
+
+                <label for="rg">RG:</label>
+                <input type="text" id="rg" name="rg" value=""><br>
+
+                <label for="tituloEleitor">Título de eleitor:</label>
+                <input type="text" id="tituloEleitor" name="tituloEleitor" value=""><br>
+
+                <label for="zona">Zona:</label>
+                <input type="text" id="zona" name="zona" value=""><br>
+
+                <label for="secao">Seção:</label>
+                <input type="text" id="secao" name="secao" value=""><br>
+
+                <label for="certificadoMilitar">Certificado Militar:</label>
+                <input type="text" id="certificadoMilitar" name="certificadoMilitar" value=""><br>
+
+                <label for="serie">Série:</label>
+                <input type="text" id="serie" name="serie" value=""><br>
+
+                <label for="dataExpedicao">Data de expedição do Certificado Militar:</label>
+                <input type="text" id="dataExpedicao" name="dataExpedicao" value=""><br>
+
+                <label for="categoria">Categoria:</label>
+                <input type="text" id="categoria" name="categoria" value=""><br>
+
+                <label for="uf">UF:</label>
+                <input type="text" id="uf" name="uf" value=""><br>
+
+                <label for="orgao">Órgão:</label>
+                <input type="text" id="orgao" name="orgao" value=""><br>
+
+                <p>Endereço</p>
+                <label for="CEP">CEP:</label>
+                <input type="text" id="CEP" value="00000-000"><br>
+
+                <label for="Logradouro">Logradouro:</label>
+                <select name="Logradouro" id="Logradouro">
+                    <option value="NaoInfo">Não Informado</option>
+                    <option value="Avenida">Avenida</option>
+                    <option value="Bloco">Bloco</option>
+                    <option value="Fazenda">Fazenda</option>
+                    <option value="Praca">Praça</option>
+                    <option value="Rodovia">Rodovia</option>
+                    <option value="Rua">Rua</option>
+                    <option value="Travessa">Travessa</option>
+                </select>
+                <input type="text" id="LogradouroText" value=""><br>
+
+                <label for="Numero">Número:</label>
+                <input type="number" id="Numero" value="()"><br>
+
+                <label for="Complemento">Complemento:</label>
+                <input type="text" id="Complemento" value="()"><br>
+
+                <label for="Bairro">Bairro:</label>
+                <input type="text" id="Bairro" value=""><br>
+
+                <label for="UF">UF:</label>
+                <select name="UF" id="UF">
+                    <option value="Estados">Estados</option>
+                </select>
+
+                <label for="Municipio">Município:</label>
+                <select name="Municipio" id="Municipio">
+                    <option value="Municipios">Municípios</option>
+                </select><br>
+
+                <p>Contatos</p>
+                <label for="DDD">Telefone:</label>
+                <input type="number" id="DDD" value="00"> <input type="text" id="Telefone" value="()"><br>
+
+                <label for="DDD2">Celular:</label>
+                <input type="number" id="DDD2" value="00"> <input type="text" id="Celular" value="()"><br>
+
+                <label for="email">Email:</label>
+                <input type="email" id="email" value="email@email.com"><br>
+
+                <p>Situação socioeconômica</p>
+                <label for="renda">Renda familiar (mensal):</label>
+                R$ <input type="number" id="renda" value="00.00"><br>
+
+                <label for="Familia">Quantidade de membros do grupo familiar:</label>
+                <input type="number" id="Familia" value="0"><br>
+
+                <p>Confirmação de senhas</p>
+                <h2>Confirme Seus Dados</h2>
+                <label for="senha">Senha:</label>
+                <input type="password" id="senha" value=""><br>
+
+                <div class="button-container">
+                    <input type="submit" value="Confirmar">
+                    <input type="submit" value="Cancelar">
+                </div>
+            </form>
+        </section>
+    </main>
+
+    <footer>
+        &copy; 2024 SIGAA. Todos os direitos reservados.
+    </footer>
 </body>
 </html>
