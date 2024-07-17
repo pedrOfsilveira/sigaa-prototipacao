@@ -4,8 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>SIGAA - Sistema Integrado de Gestão de Atividades Acadêmicas</title>
-</head>
-<body>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -71,6 +69,43 @@
         .font-buttons button:hover {
             background-color: #45a049;
         }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
     </style>
 </head>
 <body>
@@ -85,7 +120,7 @@
             <ul>
                 <li><a href="#home">Home</a></li>
                 <li><a href="#login">Login</a></li>
-                <li><a href="#modules">Módulos</a></li>
+                <li><a href="#modules" id="modules-button">Módulos</a></li>
                 <li><a href="#support">Suporte</a></li>
             </ul>
         </nav>
@@ -128,6 +163,70 @@
         <p>&copy; 2024 SIGAA. Todos os direitos reservados.</p>
     </footer>
 
+    <!-- Modal -->
+    <div id="modulesModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Módulos, Sistemas e Portais</h2>
+            <h3>Menu Principal</h3>
+            <ul>
+                <li>Ensino Infantil</li>
+                <li>Ensino Fundamental</li>
+                <li>Ensino Médio</li>
+                <li>Ensino Técnico</li>
+                <li>Ensino Técnico Integrado</li>
+                <li>Graduação</li>
+                <li>Lato Sensu</li>
+                <li>Stricto Sensu</li>
+                <li>Formação Complementar</li>
+                <li>Ações Acadêmicas Integradas</li>
+                <li>Ensino a Distância</li>
+                <li>Pesquisa</li>
+                <li>Extensão</li>
+                <li>Ensino</li>
+                <li>Assistência ao Estudante</li>
+                <li>Ouvidoria</li>
+                <li>Ambientes Virtuais</li>
+                <li>Biblioteca</li>
+                <li>Diplomas</li>
+                <li>Central de Estágios</li>
+                <li>Referência em Saúde</li>
+                <li>Processo Seletivo</li>
+                <li>NEE (Necessidades Educativas Especiais)</li>
+                <li>Avaliação Institucional</li>
+                <li>Administração do Sistema</li>
+                <li>Programa de Atualização de Pedagogia</li>
+                <li>Relações Internacionais</li>
+                <li>Instituto Metrópole Digital</li>
+                <li>Ensino em Rede</li>
+            </ul>
+            <h3>Outros Sistemas</h3>
+            <ul>
+                <li>Administrativo (SIPAC, Sistema Integrado de Gestão)</li>
+                <li>Recursos Humanos (SIGRH, Sistema Integrado de Gestão de Recursos Humanos)</li>
+                <li>Planejamento (SIGPP, Sistema Integrado de Gestão de Planejamento e Projetos)</li>
+                <li>SIGAdmin</li>
+            </ul>
+            <h3>Portais</h3>
+            <ul>
+                <li>Portal do Docente</li>
+                <li>Portal do Discente</li>
+                <li>Portal Coordenação Lato Sensu</li>
+                <li>Portal Coordenação do Stricto Sensu</li>
+                <li>Portal Coordenação & Graduação</li>
+                <li>Portal Coordenação Polo</li>
+                <li>Portal do Tutor</li>
+                <li>Portal do Professor Mediador</li>
+                <li>CPDI (Comitê para Democratização da Informática)</li>
+                <li>Portal da Reitoria</li>
+                <li>Relatórios de Gestão</li>
+                <li>Portal do Concedente de Estágio</li>
+                <li>Portal Coordenação Ensino Rede</li>
+                <li>Portal do Familiar</li>
+            </ul>
+        </div>
+    </div>
+
     <script>
         document.getElementById('loginForm').addEventListener('submit', function(event) {
             event.preventDefault();
@@ -157,6 +256,25 @@
                 document.body.style.fontSize = `${currentFontSize}px`;
             }
         });
+
+        // Modal functionality
+        const modal = document.getElementById('modulesModal');
+        const btn = document.getElementById('modules-button');
+        const span = document.getElementsByClassName('close')[0];
+
+        btn.onclick = function() {
+            modal.style.display = 'block';
+        }
+
+        span.onclick = function() {
+            modal.style.display = 'none';
+        }
+
+        window.onclick = function(event) {
+            if (event.target === modal) {
+                modal.style.display = 'none';
+            }
+        }
     </script>
 </body>
 </html>
