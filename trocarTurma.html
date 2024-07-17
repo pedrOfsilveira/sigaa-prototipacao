@@ -1,14 +1,220 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Class Page</title>
-</head>
-<body>
+    <title>Class Details</title>
+    <link rel="stylesheet" href="style.css">
     <style>
-        /* style.css */
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        section {
+            margin-bottom: 20px;
+        }
+
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        .font-buttons {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .font-buttons button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            margin-left: 5px;
+        }
+
+        .font-buttons button:hover {
+            background-color: #45a049;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container h2 {
+            text-align: center;
+            color: #4CAF50;
+        }
+
+        .form-container label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="number"],
+        .form-container input[type="date"],
+        .form-container select {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 20px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+
+        .form-container .button-group {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .form-container input[type="submit"] {
+            width: 48%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .form-container input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        a {
+            text-decoration: none;
+            color: currentColor;
+        }
+
+        #class-details {
+            width: 80%;
+            margin: auto;
+            padding: 20px;
+        }
+
+        h1, h2 {
+            color: #333;
+        }
+
+        ul {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul li {
+            padding: 10px;
+            margin: 5px 0;
+            background-color: #f0f0f0;
+            cursor: pointer;
+        }
+
+        ul li:hover {
+            background-color: #e0e0e0;
+        }
+
+        #class-info, #class-menu, #class-topics {
+            margin-top: 20px;
+        }
+
+        #class-info p, #class-menu p, #class-topics p {
+            margin: 5px 0;
+        }
+
+        button {
+            margin-left: 10px;
+            padding: 5px 10px;
+            cursor: pointer;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 3px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        #add-topic-form {
+            margin-top: 20px;
+        }
+
+        /* New styles for class switching */
         #navbar {
             display: flex;
             justify-content: flex-end;
@@ -16,54 +222,178 @@
         }
 
         #switch-class-btn {
-            padding: 10px 20px;
             background-color: #007BFF;
             color: white;
             border: none;
             cursor: pointer;
+            padding: 5px 10px;
+            border-radius: 3px;
         }
 
         #switch-class-btn:hover {
             background-color: #0056b3;
         }
 
-        select, button {
+        select, .confirm-btn {
             margin: 10px 0;
             padding: 10px;
         }
 
+        .confirm-btn {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 3px;
+        }
+
+        .confirm-btn:hover {
+            background-color: #45a049;
+        }
     </style>
+</head>
+<body>
+    <div class="font-buttons">
+        <button id="increase-font">A+</button>
+        <button id="decrease-font">A-</button>
+    </div>
+
+    <header>
+        <h1>Detalhes da Turma</h1>
+    </header>
+
     <div id="navbar">
         <button id="switch-class-btn">Trocar de Turma</button>
     </div>
-    <div id="class-content">
-        <!-- Class content here -->
-    </div>
+
+    <main>
+        <div id="class-details">
+            <h1 id="class-name">Turma A</h1>
+            <div id="class-info">
+                <p><strong>Local:</strong> Sala 101</p>
+                <p><strong>Horário:</strong> Segunda 10:00-12:00</p>
+                <p><strong>Chat:</strong> chatA</p>
+            </div>
+            <div id="class-menu">
+                <h2>Menu Virtual</h2>
+                <p>Item 1</p>
+                <p>Item 2</p>
+            </div>
+            <div id="class-topics">
+                <h2>Tópicos de Aula</h2>
+                <ul id="topics-list">
+                    <li>Topic 1 <button class="hide-btn">Esconder</button> <button class="delete-btn">Excluir</button></li>
+                    <li>Topic 2 <button class="hide-btn">Esconder</button> <button class="delete-btn">Excluir</button></li>
+                    <!-- Add more topics as needed -->
+                </ul>
+                <button id="add-topic-btn">Adicionar Tópico</button>
+            </div>
+            <div id="add-topic-form" style="display: none;">
+                <h3>Adicionar Tópico</h3>
+                <label for="topic-input">Novo Tópico:</label>
+                <input type="text" id="topic-input">
+                <button id="confirm-add-topic">Confirmar</button>
+            </div>
+        </div>
+    </main>
+
+    <footer>
+        <p>&copy; 2024 SIGAA. Todos os direitos reservados.</p>
+    </footer>
+
     <script>
-        // app.js
-        document.getElementById('switch-class-btn').addEventListener('click', () => {
-            // Assuming we have a list of classes from an API or predefined list
-            const classes = ['Turma 1', 'Turma 2', 'Turma 3'];
-            const classSelector = document.createElement('select');
+        document.addEventListener('DOMContentLoaded', () => {
+            // Simulating class data since the page is standalone
+            const selectedClass = {
+                name: 'Turma A',
+                location: 'Sala 101',
+                schedule: 'Segunda 10:00-12:00',
+                chat: 'chatA',
+                virtualMenu: ['Item 1', 'Item 2'],
+                lessonTopics: ['Topic 1', 'Topic 2']
+            };
 
-            classes.forEach(cls => {
-                const option = document.createElement('option');
-                option.value = cls;
-                option.textContent = cls;
-                classSelector.appendChild(option);
+            // Setting class details
+            document.getElementById('class-name').textContent = selectedClass.name;
+            document.getElementById('class-location').textContent = selectedClass.location;
+            document.getElementById('class-schedule').textContent = selectedClass.schedule;
+            document.getElementById('class-chat').textContent = selectedClass.chat;
+
+            // Displaying virtual menu
+            const classMenuDiv = document.getElementById('class-menu');
+            selectedClass.virtualMenu.forEach(item => {
+                const p = document.createElement('p');
+                p.textContent = item;
+                classMenuDiv.appendChild(p);
             });
 
-            const confirmButton = document.createElement('button');
-            confirmButton.textContent = 'Confirmar';
-            confirmButton.addEventListener('click', () => {
-                const selectedClass = classSelector.value;
-                window.location.href = `/class/${selectedClass}`;
+            // Displaying lesson topics
+            const topicsList = document.getElementById('topics-list');
+            selectedClass.lessonTopics.forEach(topic => {
+                const li = document.createElement('li');
+                li.textContent = topic;
+                li.innerHTML += ' <button class="hide-btn">Esconder</button> <button class="delete-btn">Excluir</button>';
+                topicsList.appendChild(li);
             });
 
-            document.body.appendChild(classSelector);
-            document.body.appendChild(confirmButton);
+            // Add topic button functionality
+            const addTopicBtn = document.getElementById('add-topic-btn');
+            const addTopicForm = document.getElementById('add-topic-form');
+            const topicInput = document.getElementById('topic-input');
+            const confirmAddTopicBtn = document.getElementById('confirm-add-topic');
+
+            addTopicBtn.addEventListener('click', () => {
+                addTopicForm.style.display = 'block';
+            });
+
+            confirmAddTopicBtn.addEventListener('click', () => {
+                const newTopic = topicInput.value;
+                if (newTopic) {
+                    const li = document.createElement('li');
+                    li.textContent = newTopic;
+                    li.innerHTML += ' <button class="hide-btn">Esconder</button> <button class="delete-btn">Excluir</button>';
+                    topicsList.appendChild(li);
+                    topicInput.value = '';
+                    addTopicForm.style.display = 'none';
+                }
+            });
+
+            // Event delegation for hide and delete buttons
+            topicsList.addEventListener('click', (e) => {
+                if (e.target.classList.contains('hide-btn')) {
+                    e.target.parentElement.style.display = 'none';
+                } else if (e.target.classList.contains('delete-btn')) {
+                    topicsList.removeChild(e.target.parentElement);
+                }
+            });
+
+            // Class switching functionality
+            const switchClassBtn = document.getElementById('switch-class-btn');
+            switchClassBtn.addEventListener('click', () => {
+                // Assuming we have a list of classes from an API or predefined list
+                const classes = ['Turma 1', 'Turma 2', 'Turma 3'];
+                const classSelector = document.createElement('select');
+
+                classes.forEach(cls => {
+                    const option = document.createElement('option');
+                    option.value = cls;
+                    option.textContent = cls;
+                    classSelector.appendChild(option);
+                });
+
+                const confirmButton = document.createElement('button');
+                confirmButton.textContent = 'Confirmar';
+                confirmButton.classList.add('confirm-btn');
+                confirmButton.addEventListener('click', () => {
+                    const selectedClass = classSelector.value;
+                    // Simulate class change - in a real application, you'd navigate to the class page
+                    alert(`Changed to ${selectedClass}`);
+                });
+
+                document.body.appendChild(classSelector);
+                document.body.appendChild(confirmButton);
+            });
         });
-
     </script>
 </body>
 </html>
