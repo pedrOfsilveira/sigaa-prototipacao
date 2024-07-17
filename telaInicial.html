@@ -202,19 +202,6 @@
     </div>
 
     <script>
-        document.getElementById('loginForm').addEventListener('submit', function(event) {
-            event.preventDefault();
-            const username = document.getElementById('username').value;
-            const password = document.getElementById('password').value;
-
-            // Simple validation
-            if(username && password) {
-                alert(`Login successful for user: ${username}`);
-            } else {
-                alert('Please enter both username and password.');
-            }
-        });
-
         const increaseFontButton = document.getElementById('increase-font');
         const decreaseFontButton = document.getElementById('decrease-font');
         let currentFontSize = 16;
