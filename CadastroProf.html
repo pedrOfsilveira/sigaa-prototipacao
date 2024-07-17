@@ -4,25 +4,212 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>IFRS SIGAA - Dados Cadastrais</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        section {
+            margin-bottom: 20px;
+        }
+
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        .font-buttons {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .font-buttons button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            margin-left: 5px;
+        }
+
+        .font-buttons button:hover {
+            background-color: #45a049;
+        }
+
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container h2 {
+            text-align: center;
+            color: #4CAF50;
+        }
+
+        .form-container label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="number"],
+        .form-container input[type="date"],
+        .form-container select {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 20px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+
+        .form-container .button-group {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .form-container input[type="submit"] {
+            width: 48%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .form-container input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        a {
+            text-decoration: none;
+            color: currentColor;
+        }
+    </style>
 </head>
 <body>
-    <h1>  IFRS SIGAA </h1>
-    <h2> Dados Cadastrais</h2>
-    Mátricula SIAPE:  <input type=text value="">(A matricula deve ser informada sem o digito verificador) <br>
-    <label for="situacao">situacao:</label>
-<select name="situacao" id="situcao">
-  <option value="ativo">Ativo</option>
-  <option value="Aposentado">Aposentado</option>
-</select><br>
-    Nome completo:<input type=text value=""><br>
-    CPF:<input type=Number value=""><br>
-    Data de nascimento:<input type=Number value=""><br>
-    Login:<input type=text value=""><br>
-    Email:<input type=text value=""><br>
-    Confirmar Email:<input type=text value=""><br>
-    Unidade de locação:<input type=text value=""><br>
-    Ramal para Contato:<input type=text value=""><br>
-    <input type=submit value="Cadastrar" > <input type=submit value="Cancelar" >
+    <header>
+        <h1><a href="LoginSigaa.html">IFRS SIGAA</a></h1>
+    </header>
+    <main>
+        <div class="form-container">
+            <h2>Dados Cadastrais</h2>
+            <label for="siape">Matrícula SIAPE:</label>
+            <input type="text" id="siape" name="siape" placeholder="A matrícula deve ser informada sem o dígito verificador">
+            
+            <label for="situacao">Situação:</label>
+            <select name="situacao" id="situacao">
+                <option value="ativo">Ativo</option>
+                <option value="aposentado">Aposentado</option>
+            </select>
+            
+            <label for="nome">Nome completo:</label>
+            <input type="text" id="nome" name="nome">
+            
+            <label for="cpf">CPF:</label>
+            <input type="number" id="cpf" name="cpf">
+            
+            <label for="data_nascimento">Data de nascimento:</label>
+            <input type="date" id="data_nascimento" name="data_nascimento">
+            
+            <label for="login">Login:</label>
+            <input type="text" id="login" name="login">
+            
+            <label for="email">Email:</label>
+            <input type="text" id="email" name="email">
+            
+            <label for="confirmar_email">Confirmar Email:</label>
+            <input type="text" id="confirmar_email" name="confirmar_email">
+            
+            <label for="unidade">Unidade de locação:</label>
+            <input type="text" id="unidade" name="unidade">
+            
+            <label for="ramal">Ramal para Contato:</label>
+            <input type="text" id="ramal" name="ramal">
+            
+            <div class="button-group">
+                <input type="submit" value="Cadastrar">
+                <input type="submit" value="Cancelar">
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 IFRS. Todos os direitos reservados.</p>
+    </footer>
 </body>
 </html>

@@ -4,15 +4,12 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>IFRS SIGAA</title>
+    <title>IFRS SIGAA - Cadastro de Aluno</title>
     <style>
         body {
             font-family: Arial, sans-serif;
             margin: 0;
             padding: 0;
-            display: flex;
-            flex-direction: column;
-            min-height: 100vh;
         }
 
         header {
@@ -39,7 +36,6 @@
 
         main {
             padding: 20px;
-            flex: 1;
         }
 
         section {
@@ -51,6 +47,9 @@
             color: white;
             text-align: center;
             padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
         }
 
         .font-buttons {
@@ -108,8 +107,8 @@
             cursor: pointer;
         }
 
-        .login-container {
-            max-width: 400px;
+        .form-container {
+            max-width: 600px;
             margin: 50px auto;
             padding: 20px;
             border: 1px solid #ddd;
@@ -117,18 +116,22 @@
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
         }
 
-        .login-container h2 {
+        .form-container h2 {
             text-align: center;
             color: #4CAF50;
         }
 
-        .login-container label {
+        .form-container label {
             display: block;
             margin: 10px 0 5px;
         }
 
-        .login-container input[type="text"],
-        .login-container input[type="password"] {
+        .form-container input[type="text"],
+        .form-container input[type="number"],
+        .form-container input[type="date"],
+        .form-container input[type="email"],
+        .form-container input[type="password"],
+        .form-container select {
             width: 100%;
             padding: 10px;
             margin: 5px 0 20px;
@@ -136,8 +139,13 @@
             border-radius: 3px;
         }
 
-        .login-container input[type="submit"] {
-            width: 100%;
+        .form-container .button-group {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .form-container input[type="submit"] {
+            width: 48%;
             padding: 10px;
             background-color: #4CAF50;
             color: white;
@@ -146,86 +154,62 @@
             cursor: pointer;
         }
 
-        .login-container input[type="submit"]:hover {
+        .form-container input[type="submit"]:hover {
             background-color: #45a049;
         }
 
-        .login-container a {
-            display: block;
-            text-align: center;
-            margin-top: 20px;
-            color: #4CAF50;
+        a {
             text-decoration: none;
-        }
-
-        .login-container a:hover {
-            text-decoration: underline;
-        }
-
-        .registration-container {
-            display: flex;
-            justify-content: space-between;
-            margin-top: 50px;
-        }
-
-        .registration-box {
-            width: 30%;
-            padding: 20px;
-            border: 1px solid #ddd;
-            border-radius: 5px;
-            text-align: center;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-
-        .registration-box h3 {
-            color: #4CAF50;
-        }
-
-        .registration-box p {
-            margin: 20px 0;
-        }
-
-        .registration-box a {
-            color: #4CAF50;
-            text-decoration: none;
-            font-weight: bold;
-        }
-
-        .registration-box a:hover {
-            text-decoration: underline;
+            color: currentColor;
         }
     </style>
 </head>
 <body>
     <header>
-        <h1>IFRS SIGAA</h1>
+        <h1><a href="LoginSigaa.html">IFRS SIGAA</a></h1>
     </header>
     <main>
-        <div class="login-container">
-            <h2>Entrar no sistema</h2>
-            <label for="username">Usuário</label>
-            <input type="text" id="username" name="username">
-            <label for="password">Senha</label>
-            <input type="password" id="password" name="password">
-            <input type="submit" value="Entrar">
-            <a href="CadastroFamiliar.html">Famliares, não cadastrados no SIGAA, clique aqui para se cadastrar.</a>
-        </div>
-
-        <div class="registration-container">
-            <div class="registration-box">
-                <h3>Professor e Funcionário</h3>
-                <p>Caso ainda não possua cadastro no SIGAA, clique no link abaixo.<br><strong>Novo Usuário</strong></p>
-                <a href="CadastroProf.html">Cadastre-se</a>
-            </div>
-            <div class="registration-box">
-                <h3>Aluno</h3>
-                <p>Caso ainda não possua cadastro no SIGAA, clique no link abaixo.<br><strong>Novo Usuário</strong></p>
-                <a href="CadastroAluno.html">Cadastre-se</a>
-            </div>
-            <div class="registration-box">
-                <h3>Familiares</h3>
-                <p>Caso ainda não possua cadastro no SIGAA, clique no link abaixo.<br><strong>Novo Usuário</strong></p>
-                <a href="CadastroFamiliar.html">Cadastre-se</a>
+        <div class="form-container">
+            <h2>Cadastro de Aluno</h2>
+            <label for="matricula">Matrícula:</label>
+            <input type="text" id="matricula" name="matricula">
+            
+            <label for="nivel_ensino">Nível de ensino:</label>
+            <input type="text" id="nivel_ensino" name="nivel_ensino">
+            
+            <label for="cpf">CPF:</label>
+            <input type="number" id="cpf" name="cpf">
+            
+            <label for="nome_social">Nome Social:</label>
+            <input type="text" id="nome_social" name="nome_social">
+            
+            <label for="rg">RG:</label>
+            <input type="text" id="rg" name="rg">
+            
+            <label for="data_nascimento">Data de Nascimento:</label>
+            <input type="date" id="data_nascimento" name="data_nascimento">
+            
+            <label for="email">E-Mail:</label>
+            <input type="email" id="email" name="email">
+            
+            <label for="ano_semestre_inicial">Ano/Semestre Inicial:</label>
+            <input type="text" id="ano_semestre_inicial" name="ano_semestre_inicial">
+            
+            <label for="senha">Senha:</label>
+            <input type="password" id="senha" name="senha">
+            
+            <label for="confirmar_senha">Confirmar Senha:</label>
+            <input type="password" id="confirmar_senha" name="confirmar_senha">
+            
+            <label for="estrangeiro">É estrangeiro e não possui CPF:</label>
+            <select id="estrangeiro" name="estrangeiro">
+                <option value="nao">Não</option>
+                <option value="sim">Sim</option>
+            </select>
+            
+            <div class="button-group">
+                <input type="submit" value="Cadastrar">
+                <input type="submit" value="Cancelar">
             </div>
         </div>
     </main>
