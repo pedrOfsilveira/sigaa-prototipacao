@@ -4,56 +4,171 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Criar Curso</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 20px;
+        }
+
+        section {
+            margin-bottom: 20px;
+        }
+
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: fixed;
+            width: 100%;
+            bottom: 0;
+        }
+
+        .form-container {
+            max-width: 800px;
+            margin: 50px auto;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .form-container h2 {
+            text-align: center;
+            color: #4CAF50;
+        }
+
+        .form-container label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        .form-container input[type="text"],
+        .form-container input[type="number"],
+        .form-container select {
+            width: 100%;
+            padding: 10px;
+            margin: 5px 0 20px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+
+        .form-container .button-container {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .form-container button {
+            width: 30%;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            border-radius: 3px;
+            cursor: pointer;
+        }
+
+        .form-container button:hover {
+            background-color: #45a049;
+        }
+
+        .form-container p {
+            font-weight: bold;
+            margin: 20px 0 10px;
+        }
+        a{
+            color:currentColor;
+            text-decoration: none;
+        }
+    </style>
 </head>
 <body>
-    <h2>Criar Curso</h2>
-    <p>Preencha todas as informações</p><br>
-    <div>
-        <label for="nome-curso">Nome do Curso:</label>
-        <input type="text" name="nome-curso"><br>
-        
-        <label for="campus">Campus:</label>
-        <select name="campus">
-            <option value="select" selected disabled hidden>Selecione</option>
-            <option value="a">A</option>
-            <option value="b">B</option>
-            <option value="c">C</option>
-        </select><br>
-        
-        <label for="nivel-curso">Nível de Ensino:</label>
-        <select name="nivel-curso">
-            <option value="select" selected disabled hidden>Selecione</option>
-            <option value="a">A</option>
-            <option value="b">B</option>
-            <option value="c">C</option>
-        </select><br>
-        
-        <label for="periodo">Periodo:</label>
-        <select name="periodo">
-            <option value="select" selected disabled hidden>Selecione</option>
-            <option value="a">Bimestral</option>
-            <option value="b">Trimestral</option>
-            <option value="c">Semestral</option>
-        </select><br>
-        
-        <label for="turno">Turno:</label>
-        <select name="turno">
-            <option value="select" selected disabled hidden>Selecione</option>
-            <option value="a">Manhã</option>
-            <option value="b">Tarde</option>
-            <option value="c">Noite</option>
-        </select><br>
+    <header>
+        <h1><a href="LoginSigaa.html">IFRS SIGAA</a></h1>
+    </header>
 
-        <label for="horas-curso">Carga Horária:</label>
-        <input type="number" name="horas-curso"><br>
+    <main>
+        <section class="form-container">
+            <h2>Preencha todas as informações</h2>
+            <form action="CriarCurso.html">
+                <label for="nome-curso">Nome do Curso:</label>
+                <input type="text" id="nome-curso" name="nome-curso"><br>
+                
+                <label for="campus">Campus:</label>
+                <select id="campus" name="campus">
+                    <option value="select" selected disabled hidden>Selecione</option>
+                    <option value="a">A</option>
+                    <option value="b">B</option>
+                    <option value="c">C</option>
+                </select><br>
+                
+                <label for="nivel-curso">Nível de Ensino:</label>
+                <select id="nivel-curso" name="nivel-curso">
+                    <option value="select" selected disabled hidden>Selecione</option>
+                    <option value="a">A</option>
+                    <option value="b">B</option>
+                    <option value="c">C</option>
+                </select><br>
+                
+                <label for="periodo">Período:</label>
+                <select id="periodo" name="periodo">
+                    <option value="select" selected disabled hidden>Selecione</option>
+                    <option value="a">Bimestral</option>
+                    <option value="b">Trimestral</option>
+                    <option value="c">Semestral</option>
+                </select><br>
+                
+                <label for="turno">Turno:</label>
+                <select id="turno" name="turno">
+                    <option value="select" selected disabled hidden>Selecione</option>
+                    <option value="a">Manhã</option>
+                    <option value="b">Tarde</option>
+                    <option value="c">Noite</option>
+                </select><br>
 
-        <button>Adicionar</button><br>
+                <label for="horas-curso">Carga Horária:</label>
+                <input type="number" id="horas-curso" name="horas-curso"><br>
 
-        <button>Criar</button>
-        <button>Salvar Rascunho</button>
-        <button>Cancelar</button>
+                <div class="button-container">
+                    <button type="button">Adicionar</button>
+                    <button type="submit">Criar</button>
+                    <button type="button">Salvar Rascunho</button>
+                    <button type="button">Cancelar</button>
+                </div>
+            </form>
+        </section>
+    </main>
 
-    </div>
+    <footer>
+        &copy; 2024 Todos os direitos reservados.
+    </footer>
 </body>
 </html>
