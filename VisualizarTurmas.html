@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visualizar Turmas - IFRS</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 0;
+      text-align: center;
+    }
+
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    nav ul li {
+      display: inline;
+      margin: 0 10px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    section {
+      margin-bottom: 20px;
+    }
+
+    footer {
+      background-color: #4CAF50;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      position: fixed;
+      width: 100%;
+      bottom: 0;
+    }
+
+    .turma {
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+
+    .turma h3 {
+      margin: 0;
+    }
+
+    .turma p {
+      margin: 5px 0;
+    }
+
+    .turma a {
+      color: #4CAF50;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .turma a:hover {
+      text-decoration: underline;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      color: white;
+      background-color: #4CAF50;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+
+    .btn:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>IFRS - Visualizar Turmas</h1>
+    <nav>
+      <ul>
+        <li><a href="#">Home</a></li>
+        <li><a href="#">Turmas</a></li>
+        <li><a href="#">Perfil</a></li>
+        <li><a href="#">Sair</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>Minhas Turmas</h2>
+
+      <div class="turma">
+        <h3>Turma 1</h3>
+        <p>Local: Sala 101</p>
+        <p>Horário: Segundas e Quartas, 10:00 - 12:00</p>
+        <a href="#" class="btn">Acessar Turma</a>
+        <a href="#">Chat da Turma</a>
+      </div>
+
+      <div class="turma">
+        <h3>Turma 2</h3>
+        <p>Local: Sala 202</p>
+        <p>Horário: Terças e Quintas, 14:00 - 16:00</p>
+        <a href="#" class="btn">Acessar Turma</a>
+        <a href="#">Chat da Turma</a>
+      </div>
+
+      <!-- Adicionar mais turmas conforme necessário -->
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 IFRS - Instituto Federal do Rio Grande do Sul</p>
+  </footer>
+</body>
+
+</html>
