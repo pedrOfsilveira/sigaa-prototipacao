@@ -17,6 +17,15 @@
       color: white;
       padding: 10px 0;
       text-align: center;
+      position: relative;
+    }
+
+    #clock {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      color: white;
+      font-size: 18px;
     }
 
     nav ul {
@@ -90,12 +99,30 @@
     .btn:hover {
       background-color: #45a049;
     }
-    #clock {
-      position: absolute;
-      top: 10px;
-      right: 20px;
-      color: white;
-      font-size: 18px;
+
+    .frequencia, .notas {
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+
+    .frequencia h4, .notas h4 {
+      margin: 0;
+      margin-bottom: 10px;
+    }
+
+    .frequencia p, .notas p {
+      margin: 5px 0;
+    }
+
+    .notas ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    .notas ul li {
+      margin-bottom: 5px;
     }
   </style>
 </head>
@@ -118,27 +145,37 @@
       <h2>Minhas Turmas</h2>
 
       <div class="turma">
-        <h3>Turma 1</h3>
+        <h3>Turma</h3>
         <p>Local: Sala 101</p>
         <p>Horário: Segundas e Quartas, 10:00 - 12:00</p>
-        <a href="#" class="btn">Acessar Turma</a>
-      </div>
-
-      <div class="turma">
-        <h3>Turma 2</h3>
-        <p>Local: Sala 202</p>
-        <p>Horário: Terças e Quintas, 14:00 - 16:00</p>
         <a href="#" class="btn">Acessar Turma</a>
         <a href="#">Chat da Turma</a>
       </div>
 
-      <!-- Adicionar mais turmas conforme necessário -->
+      <div class="frequencia">
+        <h4>Frequência</h4>
+        <p>Total de aulas no ano: 60</p>
+        <p>Total de faltas: 5</p>
+        <p>% de aulas já ocorridas: 50%</p>
+      </div>
+
+      <div class="notas">
+        <h4>Notas</h4>
+        <ul>
+          <li>1º Trimestre: 6</li>
+          <li>2º Trimestre: 8</li>
+          <li>3º Trimestre: 9</li>
+        </ul>
+        <p>Média Final: 7.67</p>
+      </div>
+
     </section>
   </main>
 
   <footer>
     <p>&copy; 2024 IFRS - Instituto Federal do Rio Grande do Sul</p>
   </footer>
+
   <script>
     function updateClock() {
       const now = new Date();
