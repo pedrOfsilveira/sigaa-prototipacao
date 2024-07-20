@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Critérios de Busca dos Projetos</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+    }
+
+    header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 0;
+      text-align: center;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
+
+    main {
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      height: 100vh;
+      margin-top: 62vh; /* Ajuste a margem superior para evitar sobreposição */
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 800px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    form {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px;
+    }
+
+    label {
+      grid-column: 1 / 3;
+      margin-bottom: 8px;
+    }
+
+    input, select {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      box-sizing: border-box;
+    }
+
+    .full-width {
+      grid-column: 1 / 3;
+    }
+
+    .radio-group {
+      display: flex;
+      align-items: center;
+    }
+
+    .radio-group label {
+      margin-left: 10px;
+      margin-right: 20px;
+    }
+
+    .button-group {
+      grid-column: 1 / 3;
+      text-align: center;
+    }
+
+    button {
+      padding: 10px 15px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 5px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Critérios de Busca dos Projetos</h1>
+  </header>
+
+  <main>
+    <div class="container">
+      <form>
+        <label class="radio-group">
+            Interno:<input type="radio" name="tipo" value="interno" checked>
+            Externo:<input type="radio" name="tipo" value="externo">
+        </label>
+
+        <label for="codigo">Código:</label>
+        <input type="text" id="codigo" name="codigo">
+
+        <label for="ano">Ano:</label>
+        <input type="text" id="ano" name="ano">
+
+        <label class="radio-group full-width">
+            Todos do IFRS  <input type="radio" name="pesquisador" value="todos" checked> 
+            Somente da minha unidade <input type="radio" name="pesquisador" value="unidade"> 
+        </label>
+
+        <label for="unidade">Centro/Unidade:</label>
+        <select id="unidade" name="unidade">
+          <option value="">-- SELECIONE --</option>
+        </select>
+
+        <label for="titulo" class="full-width">Título:</label>
+        <input type="text" id="titulo" name="titulo" class="full-width">
+
+        <label for="objetivos" class="full-width">Objetivos:</label>
+        <input type="text" id="objetivos" name="objetivos" class="full-width">
+
+        <label for="area-conhecimento">Área de Conhecimento:</label>
+        <select id="area-conhecimento" name="area-conhecimento">
+          <option value="">-- SELECIONE UMA ÁREA DE CONHECIMENTO --</option>
+        </select>
+
+        <label for="grupo-pesquisa">Grupo de Pesquisa:</label>
+        <select id="grupo-pesquisa" name="grupo-pesquisa">
+          <option value="">-- SELECIONE UM GRUPO DE PESQUISA --</option>
+        </select>
+
+        <label for="agencia-financiadora">Agência Financiadora:</label>
+        <select id="agencia-financiadora" name="agencia-financiadora">
+          <option value="">-- SELECIONE UMA AGÊNCIA FINANCIADORA --</option>
+        </select>
+
+        <label for="edital">Edital:</label>
+        <select id="edital" name="edital">
+          <option value="">-- SELECIONE UM EDITAL --</option>
+        </select>
+
+        <label for="situacao-projeto">Situação do Projeto:</label>
+        <select id="situacao-projeto" name="situacao-projeto">
+          <option value="">-- SELECIONE UMA SITUAÇÃO --</option>
+        </select>
+
+        <label for="natureza-projeto">Natureza do Projeto:</label>
+        <select id="natureza-projeto" name="natureza-projeto">
+          <option value="">-- SELECIONE UMA NATUREZA --</option>
+        </select>
+
+        <label for="tipo-pesquisa">Tipo de Pesquisa:</label>
+        <select id="tipo-pesquisa" name="tipo-pesquisa">
+          <option value="">-- SELECIONE UM TIPO --</option>
+        </select>
+
+        <label class="radio-group full-width">
+            Submetido  <input type="radio" name="relatorio" value="submetido" checked> 
+            Não Submetido <input type="radio" name="relatorio" value="nao-submetido"> 
+        </label>
+
+        <label class="full-width">
+          <input type="checkbox" name="gerar-relatorio" value="1"> Gerar relatório
+        </label>
+
+        <div class="button-group">
+          <button type="submit">Buscar</button>
+          <a href="telaInicial.html"><button type="button">Cancelar</button></a>
+        </div>
+      </form>
+    </div>
+  </main>
+</body>
+
+</html>

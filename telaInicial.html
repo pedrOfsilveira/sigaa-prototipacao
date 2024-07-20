@@ -11,6 +11,9 @@
             margin: 0;
             padding: 0;
             font-size: 14px;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
         header {
@@ -57,9 +60,9 @@
             color: white;
             text-align: center;
             padding: 10px 0;
-            position: sticky;
             width: 100%;
-            bottom: 0;
+            position:relative;
+            bottom:0;
         }
 
         .font-buttons {
@@ -205,9 +208,9 @@
             <div class="user-info">
                 <img src="profile.jpg" alt="Foto de Perfil" width="100">
                 <h2>Pedro Ferreira da Silveira</h2>
-                <a href="#">Mensagens</a>
-                <a href="#">Atualizar Foto e Perfil</a>
-                <a href="AlterarDados.html">AlterarDados</a>
+                <a href="caixaPostal.html">Mensagens</a>
+                <a href="calendario.html">Calendario Acadêmico</a>
+                <a href="AlterarDados.html">Alterar Dados</a>
                 <a href="https://forumdecurso.com.br">Fórum de Curso</a>
                 <a href="https://acessoperiodicos.capes.gov.br">Periódicos CAPES</a>
                 <a href="https://comunidadevirtual.com">Comunidade Virtual</a>
@@ -232,48 +235,38 @@
                         <th>Componente Curricular</th>
                         <th>Local</th>
                         <th>Horário</th>
-                        <th>Chat</th>
                     </tr>
                 </thead>
                 <tbody>
                     <tr>
-                        <td><a href="VisualizarTurmasA.html"> Biologia I</a></td>
+                        <td><a href="VisualizarTurmasA.html">Biologia I</a></td>
                         <td>INFO 3C</td>
                         <td>2M12 (19/02/2024 - 06/12/2024)</td>
-                        <td><a href="#">Chat</a></td>
                     </tr>
                     <tr>
                         <td><a href="VisualizarTurmasA.html">Educação Física III</a></td>
                         <td>INFO 3C</td>
                         <td>2M45 (19/02/2024 - 06/12/2024)</td>
-                        <td><a href="#">Chat</a></td>
                     </tr>
                     <tr>
-                        <td><a href="VisualizarTurmasA.html"> Engenharia de Software </a></td>
+                        <td><a href="VisualizarTurmasA.html">Engenharia de Software</a></td>
                         <td>INFO 3C</td>
                         <td>2M45 (19/02/2024 - 06/12/2024)</td>
-                        <td><a href="#">Chat</a></td>
                     </tr>
                     <tr>
-                        <td><a href="VisualizarTurmasA.html"> Física III </a></td>
+                        <td><a href="VisualizarTurmasA.html">Física III</a></td>
                         <td>INFO 3C</td>
                         <td>4M45 (19/02/2024 - 06/12/2024)</td>
-                        <td><a href="#">Chat</a></td>
                     </tr>
                     <tr>
-                        <td><a href="VisualizarTurmasA.html"> Geografia </a> I</td>
+                        <td><a href="VisualizarTurmasA.html">Geografia I</a></td>
                         <td>INFO 3C</td>
                         <td>6M12 (19/02/2024 - 06/12/2024)</td>
-                        <td><a href="#">Chat</a></td>
                     </tr>
                 </tbody>
             </table>
         </section>
     </main>
-
-    <footer>
-        <p>&copy; 2024 SIGAA. Todos os direitos reservados.</p>
-    </footer>
 
     <!-- Modal -->
     <div id="modulesModal" class="modal">
@@ -298,7 +291,7 @@
             <h3>Sistemas e Portais</h3>
             <ul>
                 <li>Ensino</li>
-                <li>Pesquisa</li>
+                <li><a href="pesquisa.html">Pesquisa</a></li>
                 <li>Extensão</li>
                 <li>Ações Associadas</li>
                 <li>Biblioteca</li>
@@ -308,6 +301,10 @@
             </ul>
         </div>
     </div>
+
+    <footer>
+        <p>&copy; 2024 SIGAA. Todos os direitos reservados.</p>
+    </footer>
 
     <script>
         document.getElementById('modules-button').onclick = function () {

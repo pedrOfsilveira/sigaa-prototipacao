@@ -1,4 +1,3 @@
-<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -9,34 +8,77 @@
 </head>
 <body>
     <style>
-        /* style.css */
-        #mailbox {
-            width: 80%;
-            margin: auto;
-        }
-
-        #controls {
-            display: flex;
-            justify-content: space-between;
-            margin-bottom: 20px;
-        }
-
-        #controls button, #controls input {
-            padding: 10px;
-            margin: 5px;
-        }
-
-        #messages {
-            display: flex;
-            justify-content: space-between;
-        }
-
-        #messages ul {
-            list-style: none;
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
             padding: 0;
-            width: 45%;
+            font-size: 14px;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
         }
 
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 20px;
+            flex: 1;
+        }
+
+        section {
+            flex-grow: 1;
+        }
+
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: sticky;
+            bottom: 0;
+            width: 100%;
+        }
+
+        .font-buttons {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .font-buttons button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            margin-left: 5px;
+        }
+
+        .font-buttons button:hover {
+            background-color: #45a049;
+        }
+
+        /* Modal styles */
         .modal {
             display: none;
             position: fixed;
@@ -81,25 +123,88 @@
             padding: 10px;
         }
 
+        /* Styles for mailbox */
+        #mailbox {
+            width: 80%;
+            margin: auto;
+        }
+
+        #controls {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 20px;
+        }
+
+        #controls button, #controls input {
+            padding: 10px;
+            margin: 5px;
+        }
+
+        #messages {
+            display: flex;
+            justify-content: space-between;
+        }
+
+        #messages ul {
+            list-style: none;
+            padding: 0;
+            width: 45%;
+        }
+
+        a {
+            color: currentColor;
+            text-decoration: none;
+        }
+
+        .back-button {
+            display: block;
+            margin: 20px auto;
+            padding: 10px 20px;
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            text-decoration: none;
+            border-radius: 5px;
+            width: fit-content;
+        }
+
+        .back-button:hover {
+            background-color: #45a049;
+        }
     </style>
-    <div id="mailbox">
-        <div id="controls">
-            <button id="send-btn">Enviar Mensagem</button>
-            <button id="delete-btn">Apagar Mensagem</button>
-            <input type="text" id="search-box" placeholder="Buscar Mensagens">
-            <button id="search-btn">Buscar</button>
-        </div>
-        <div id="messages">
-            <h2>Caixa de Entrada</h2>
-            <ul id="inbox">
-                <!-- Messages will be dynamically inserted here -->
-            </ul>
-            <h2>Caixa de Saída</h2>
-            <ul id="outbox">
-                <!-- Messages will be dynamically inserted here -->
-            </ul>
-        </div>
-    </div>
+    <header>
+        <h1>Mailbox</h1>
+    </header>
+    <main>
+        <section>
+            <div id="mailbox">
+                <div id="controls">
+                    <button id="send-btn">Enviar Mensagem</button>
+                    <button id="delete-btn">Apagar Mensagem</button>
+                    <input type="text" id="search-box" placeholder="Buscar Mensagens">
+                    <button id="search-btn">Buscar</button>
+                </div>
+                <div id="messages">
+                    <div>
+                        <h2>Caixa de Entrada</h2>
+                        <ul id="inbox">
+                            <!-- Messages will be dynamically inserted here -->
+                        </ul>
+                    </div>
+                    <div>
+                        <h2>Caixa de Saída</h2>
+                        <ul id="outbox">
+                            <!-- Messages will be dynamically inserted here -->
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 Mailbox App. Todos os direitos reservados.</p>
+        <a href="telainicial.html" class="back-button">Voltar para a Tela Inicial</a>
+    </footer>
 
     <!-- Modal for sending message -->
     <div id="send-message-modal" class="modal">
