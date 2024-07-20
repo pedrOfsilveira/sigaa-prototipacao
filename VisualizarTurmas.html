@@ -68,7 +68,7 @@
     }
 
     .turma a {
-      color: #000000;
+      color: currentColor;
       text-decoration: none;
       font-weight: bold;
     }
@@ -80,7 +80,7 @@
     .btn {
       display: inline-block;
       padding: 10px 20px;
-      color: white;
+      color: white !important;
       background-color: #4CAF50;
       text-decoration: none;
       border-radius: 5px;
@@ -90,6 +90,7 @@
     .btn:hover {
       background-color: #45a049;
     }
+
     #clock {
       position: absolute;
       top: 10px;
@@ -122,6 +123,7 @@
         <p>Local: Sala 101</p>
         <p>Horário: Segundas e Quartas, 10:00 - 12:00</p>
         <a href="#" class="btn">Acessar Turma</a>
+        <a href="CalendarioTurmas.html" class="btn">Calendário</a>
       </div>
 
       <div class="turma">
@@ -129,7 +131,15 @@
         <p>Local: Sala 202</p>
         <p>Horário: Terças e Quintas, 14:00 - 16:00</p>
         <a href="#" class="btn">Acessar Turma</a>
-        <a href="#">Chat da Turma</a>
+        <a href="CalendarioTurmas.html" class="btn">Calendário</a>
+      </div>
+
+      <div class="turma">
+        <h3>Turma 3</h3>
+        <p>Local: Sala 412</p>
+        <p>Horário: Quartas e Sextas, 8:00 - 10:00</p>
+        <a href="#" class="btn">Acessar Turma</a>
+        <a href="CalendarioTurmas.html" class="btn">Calendário</a>
       </div>
 
       <!-- Adicionar mais turmas conforme necessário -->
