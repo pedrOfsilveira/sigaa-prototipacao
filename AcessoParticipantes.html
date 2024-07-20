@@ -162,7 +162,7 @@
           <td>ana@empresa.com</td>
           <td class="action-buttons">
             <button onclick="sendMessage('Ana')">Enviar Mensagem</button>
-            <button onclick="launchGrades('Ana')">Lançar Notas</button>
+            <a href="LancarNotas.html"><button>Lançar Notas</button></a>
           </td>
         </tr>
         <tr>
@@ -170,7 +170,7 @@
           <td>beatriz@empresa.com</td>
           <td class="action-buttons">
             <button onclick="sendMessage('Beatriz')">Enviar Mensagem</button>
-            <button onclick="launchGrades('Beatriz')">Lançar Notas</button>
+            <a href="LancarNotas.html"><button href="LancarNotas.html">Lançar Notas</button></a>
           </td>
         </tr>
         <tr>
@@ -178,7 +178,7 @@
           <td>carlos@empresa.com</td>
           <td class="action-buttons">
             <button onclick="sendMessage('Carlos')">Enviar Mensagem</button>
-            <button onclick="launchGrades('Carlos')">Lançar Notas</button>
+            <a href="LancarNotas.html"><button href="LancarNotas.html">Lançar Notas</button></a>
           </td>
         </tr>
       </tbody>
@@ -200,10 +200,6 @@
 
     function sendMessage(name) {
       alert('Enviar mensagem para ' + name + ' ainda não implementado.');
-    }
-
-    function launchGrades(name) {
-      alert('Lançar notas para ' + name + ' ainda não implementado.');
     }
   </script>
 </body>
