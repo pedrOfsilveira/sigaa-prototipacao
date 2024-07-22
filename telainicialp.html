@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>SIGAA - Sistema Integrado de Gestão de Atividades Acadêmicas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 20px;
+            display: flex;
+        }
+
+        aside {
+            width: 250px;
+            margin-right: 20px;
+            background-color: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        section {
+            flex-grow: 1;
+        }
+
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            width: 100%;
+            position:relative;
+            bottom:0;
+        }
+        
+        .font-buttons {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .font-buttons button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            margin-left: 5px;
+        }
+
+        .font-buttons button:hover {
+            background-color: #45a049;
+        }
+
+        .button-group {
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .user-info {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .user-info img {
+            border-radius: 50%;
+            margin-bottom: 10px;
+            /* height: 100px; */
+        }
+
+        .user-info h2 {
+            margin: 10px 0;
+            font-size: 18px;
+        }
+
+        .user-info a {
+            display: block;
+            color: #4CAF50;
+            text-decoration: none;
+            margin: 5px 0;
+        }
+
+        .institutional-data {
+            background-color: #fff;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        .institutional-data p {
+            margin: 5px 0;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .course-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .course-table th,
+        .course-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        .course-table th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .course-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .course-table tr:hover {
+            background-color: #ddd;
+        }
+        a{
+            color:currentColor;
+            text-decoration: none;
+        
+        }
+    </style>
+</head>
+
+<body>
+    <div class="font-buttons">
+        <button id="increase-font">A+</button>
+        <button id="decrease-font">A-</button>
+    </div>
+
+    <header>
+        <h1>SIGAA - Sistema Integrado de Gestão de Atividades Acadêmicas</h1>
+        <nav>
+            <ul>
+                <li><a href="LoginSigaa.html">Logout</a></li>
+                <li><a href="#modules" id="modules-button">Módulos</a></li>
+                <li><a href="https://docs.info.ufrn.br/doku.php?id=suporte:sigaa:visao_geral">Suporte</a></li>
+                <li><a href="boletim.html">Emissão de registros acadêmicos</a> </li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        <aside>
+            <div class="user-info">
+                <img src="https://via.placeholder.com/100" alt="User Image">
+                <h2>Pedro Ferreira da Silveira</h2>
+                <a href="caixaPostal.html">Mensagens</a>
+                <a href="calendario.html">Calendario Acadêmico</a>
+                <a href="AlterarDados.html">Alterar Dados</a>
+                <a href="https://forumdecurso.com.br">Fórum de Curso</a>
+                <a href="https://acessoperiodicos.capes.gov.br">Periódicos CAPES</a>
+                <a href="https://comunidadevirtual.com">Comunidade Virtual</a>
+            </div>
+            <div class="institutional-data">
+                <p><strong>Matrícula:</strong> 2022300858</p>
+                <p><strong>Curso:</strong> Informática para Internet Integrado ao Ensino Médio</p>
+                <p><strong>Nível:</strong> Técnico Integrado</p>
+                <p><strong>Status:</strong> Ativo</p>
+                <p><strong>E-Mail:</strong> pedrosilveira24@gmail.com</p>
+                <p><strong>Entrada:</strong> 2022.0</p>
+            </div>
+        </aside>
+        <section>
+            <h2>Bem-vindo ao SIGAA</h2>
+            <p>Gerencie suas atividades acadêmicas com facilidade e eficiência.</p>
+
+            <h3>Turmas do Semestre</h3>
+            <table class="course-table">
+                <thead>
+                    <tr>
+                        <th>Componente Curricular</th>
+                        <th>Turma</th>
+                        <th>Horário</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td><a href="VisualizarTurmas.html">Biologia I</a></td>
+                        <td>3C</td>
+                        <td>2M45 (19/02/2024 - 06/12/2024)</td>
+                    </tr>
+                    <tr>
+                        <td><a href="VisualizarTurmas.html">Biologia II</a></td>
+                        <td>4A</td>
+                        <td>2M45 (19/02/2024 - 06/12/2024)</td>
+                    </tr>
+                    <tr>
+                        <td><a href="VisualizarTurmas.html">Biologia I</a></td>
+                        <td>3B</td>
+                        <td>2M45 (19/02/2024 - 06/12/2024)</td>
+                    </tr>
+                    <tr>
+                        <td><a href="VisualizarTurmas.html">Biologia I</a></td>
+                        <td> 3D </td>
+                        <td>2M45 (19/02/2024 - 06/12/2024)</td>
+                    </tr>
+                    <tr>
+                        <td><a href="VisualizarTurmas.html">Biologia I</a></td>
+                        <td> 3E</td>
+                        <td>2M45 (19/02/2024 - 06/12/2024)</td>
+                    </tr>
+                    <tr>
+                        <td><a href="VisualizarTurmas.html">Biologia I</a></td>
+                        <td> 3B</td>
+                        <td>2M45 (19/02/2024 - 06/12/2024)</td>
+                    </tr>
+                    <tr>
+                        <td><a href="VisualizarTurmas.html">Biologia I</a></td>
+                        <td>3A</td>
+                        <td>2M45 (19/02/2024 - 06/12/2024)</td>
+                    </tr>
+                    <tr>
+                        <td><a href="VisualizarTurmas.html">Biologia I</a></td>
+                        <td> 3F</td>
+                        <td>2M45 (19/02/2024 - 06/12/2024)</td>
+                    </tr>
+                    <tr>
+                        <td><a href="VisualizarTurmas.html">Biologia II</a></td>
+                        <td> 4C</td>
+                        <td>2M45 (19/02/2024 - 06/12/2024)</td>
+                    </tr>
+                    <tr>
+                        <td><a href="VisualizarTurmas.html">Biologia Ii</a></td>
+                        <td> 4B</td>
+                        <td>2M45 (19/02/2024 - 06/12/2024)</td>
+                    </tr>
+                </tbody>
+            </table>
+            <br>
+            <div class="button-group">
+                <a href="VerTurmasAnteriores.html"><button>Ver turmas anteriores</button></a>
+                <a><button>Ver grade de horarios</button></a>
+            </div>
+        </section>
+    </main>
+
+    <!-- Modal -->
+    <div id="modulesModal" class="modal">
+        <div class="modal-content">
+            <span class="close">&times;</span>
+            <h2>Módulos, Sistemas e Portais</h2>
+            <h3>Menu Principal</h3>
+            <ul>
+                <li>Ensino Infantil</li>
+                <li>Ensino Fundamental</li>
+                <li>Ensino Médio</li>
+                <li>Ensino Técnico</li>
+                <li>Ensino Técnico Integrado</li>
+                <li>Graduação</li>
+                <li>Lato Sensu</li>
+                <li>Orientação acadêmica</li>
+                <li>Orientação Pós-graduação</li>
+                <li>Stricto Sensu</li>
+                <li>Formação Complementar</li>
+                <li>Ações Acadêmicas Integradas</li>
+                <li>Ensino a Distância</li>
+            </ul>
+            <h3>Sistemas e Portais</h3>
+            <ul>
+                <li>Ensino</li>
+                <li>Estágios</li>
+                <li><a href="consultas.html">Consultas</a></li>
+                <li><a href="pesquisa.html">Projetos</a></li>
+                <li>PAP</li>
+                <li>Ações Associadas</li>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 SIGAA. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.getElementById('modules-button').onclick = function () {
+            document.getElementById('modulesModal').style.display = 'block';
+        };
+
+        document.getElementsByClassName('close')[0].onclick = function () {
+            document.getElementById('modulesModal').style.display = 'none';
+        };
+
+        window.onclick = function (event) {
+            if (event.target == document.getElementById('modulesModal')) {
+                document.getElementById('modulesModal').style.display = 'none';
+            }
+        };
+
+        // Font size adjustment script
+        document.getElementById('increase-font').addEventListener('click', function () {
+            document.body.style.fontSize = 'larger';
+        });
+
+        document.getElementById('decrease-font').addEventListener('click', function () {
+            document.body.style.fontSize = 'smaller';
+        });
+    </script>
+</body>
+
+</html>
