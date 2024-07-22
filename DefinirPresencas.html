@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Visualização de Aulas por Alunos</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 20px;
+            flex-grow: 1;
+        }
+
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+
+        .button-group {
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .font-buttons {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .font-buttons button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            margin-left: 5px;
+        }
+
+        .font-buttons button:hover {
+            background-color: #45a049;
+        }
+
+        .participant-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .participant-table th,
+        .participant-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+            text-align: center;
+        }
+
+        .participant-table th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .participant-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .participant-table tr:hover {
+            background-color: #ddd;
+        }
+
+        .action-buttons button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            margin: 0 5px;
+            font-size: 12px;
+        }
+
+        .action-buttons button:hover {
+            background-color: #45a049;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Visualização de Aulas Ministradas por Alunos</h1>
+    </header>
+    <main>
+        <div class="button-group">
+            <button onclick="generateSpreadsheet()">Gerar Planilha</button>
+        </div>
+        <table class="participant-table" id="studentsTable">
+            <thead>
+                <tr>
+                    <th>Aluno</th>
+                    <th>Disciplina</th>
+                    <th>Carga Horária</th>
+                    <th>Ano</th>
+                    <th>Curso</th>
+                    <th>Código do Curso</th>
+                    <th>Código do Turma</th>
+                    <th>01/08</th>
+                    <th>02/08</th>
+                    <th>03/08</th>
+                    <!-- Adicione mais dias conforme necessário -->
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Conteúdo da tabela será gerado dinamicamente -->
+            </tbody>
+        </table>
+        <br>
+        <div class="button-group">
+            <a href="VisualizarTurmas.html"><button type="button">Voltar</button></a>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 IFRS - Instituto Federal do Rio Grande do Sul</p>
+    </footer>
+
+    <script>
+        function generateSpreadsheet() {
+            const tableBody = document.querySelector('#studentsTable tbody');
+            tableBody.innerHTML = '';
+
+            const students = [
+                { nome: 'João Silva', disciplina: 'EDUCAÇÃO FÍSICA I', cargaHoraria: '66h', ano: '2023', curso: 'ABC', codigoCurso: '001', codigoTurma: '002' },
+                { nome: 'Maria Oliveira', disciplina: 'EDUCAÇÃO FÍSICA I', cargaHoraria: '66h', ano: '2023', curso: 'ABC', codigoCurso: '001', codigoTurma: '002' },
+                { nome: 'Carlos Pereira', disciplina: 'EDUCAÇÃO FÍSICA I', cargaHoraria: '66h', ano: '2023', curso: 'ABC', codigoCurso: '001', codigoTurma: '002' },
+                { nome: 'Ana Costa', disciplina: 'EDUCAÇÃO FÍSICA I', cargaHoraria: '66h', ano: '2023', curso: 'ABC', codigoCurso: '001', codigoTurma: '002' },
+                { nome: 'Lucas Mendes', disciplina: 'EDUCAÇÃO FÍSICA I', cargaHoraria: '66h', ano: '2023', curso: 'ABC', codigoCurso: '001', codigoTurma: '002' },
+                { nome: 'Mariana Santos', disciplina: 'EDUCAÇÃO FÍSICA I', cargaHoraria: '66h', ano: '2023', curso: 'ABC', codigoCurso: '001', codigoTurma: '002' },
+                { nome: 'Pedro Almeida', disciplina: 'EDUCAÇÃO FÍSICA I', cargaHoraria: '66h', ano: '2023', curso: 'ABC', codigoCurso: '001', codigoTurma: '002' },
+                { nome: 'Paula Ferreira', disciplina: 'EDUCAÇÃO FÍSICA I', cargaHoraria: '66h', ano: '2023', curso: 'ABC', codigoCurso: '001', codigoTurma: '002' },
+            ];
+
+            students.forEach(student => {
+                const row = document.createElement('tr');
+                row.innerHTML = `
+                    <td>${student.nome}</td>
+                    <td>${student.disciplina}</td>
+                    <td>${student.cargaHoraria}</td>
+                    <td>${student.ano}</td>
+                    <td>${student.curso}</td>
+                    <td>${student.codigoCurso}</td>
+                    <td>${student.codigoTurma}</td>
+                    <td><input type="checkbox" onchange="confirmChange(this)"></td>
+                    <td><input type="checkbox" onchange="confirmChange(this)"></td>
+                    <td><input type="checkbox" onchange="confirmChange(this)"></td>
+                    <!-- Adicione mais checkboxes conforme necessário -->
+                `;
+                tableBody.appendChild(row);
+            });
+        }
+
+        function confirmChange(checkbox) {
+            if (confirm('Tem certeza que deseja alterar a frequência?')) {
+                // Salvar a nova frequência
+                alert('Frequência salva com sucesso!');
+            } else {
+                // Cancelar a alteração e restaurar o valor original
+                checkbox.checked = !checkbox.checked;
+            }
+        }
+
+        document.addEventListener('DOMContentLoaded', () => {
+            generateSpreadsheet();
+        });
+    </script>
+</body>
+</html>
