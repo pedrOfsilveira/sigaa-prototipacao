@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Controle de Evasão</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        main {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .control-container {
+            max-width: 800px;
+            width: 100%;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+        }
+
+        .control-container h2 {
+            color: #4CAF50;
+            text-align: center;
+        }
+
+        .control-container label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        .control-container input[type="file"],
+        .control-container input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0 20px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+
+        .control-container input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .control-container input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .alert-container {
+            max-width: 800px;
+            width: 100%;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        .alert-container h3 {
+            color: #ff5722;
+        }
+
+        .report-container {
+            max-width: 800px;
+            width: 100%;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .report-container h3 {
+            color: #4CAF50;
+        }
+
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: sticky;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Controle de Evasão</h1>
+    </header>
+    <main>
+        <div class="control-container">
+            <h2>Monitoramento de Frequência</h2>
+            <form id="attendanceForm">
+                <label for="attendanceFile">Upload de dados de frequência:</label>
+                <input type="file" id="attendanceFile" name="attendanceFile" accept=".pdf" required>
+                <input type="submit" value="Enviar">
+            </form>
+        </div>
+
+        <div class="alert-container" id="alertContainer">
+            <h3>Alertas de Evasão</h3>
+            <p id="alerts">Nenhum alerta no momento.</p>
+        </div>
+
+        <div class="report-container" id="reportContainer">
+            <h3>Relatório de Evasão</h3>
+            <p id="report">Nenhum relatório disponível.</p>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 IFRS. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.getElementById('attendanceForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Simulate processing the uploaded file and generating alerts and reports
+            const alertContainer = document.getElementById('alertContainer');
+            const reportContainer = document.getElementById('reportContainer');
+            
+            // Simulated alert generation
+            const alerts = 'Aluno João da Silva está com 20% de faltas. Alerta de evasão!';
+            document.getElementById('alerts').textContent = alerts;
+            alertContainer.style.display = 'block';
+
+            // Simulated report generation
+            const report = 'Relatório de Evasão: \nAluno João da Silva - 20% de faltas';
+            document.getElementById('report').textContent = report;
+            reportContainer.style.display = 'block';
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gerenciamento de Acesso SIGAA</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        main {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .login-container {
+            max-width: 400px;
+            width: 100%;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .login-container h2 {
+            color: #4CAF50;
+        }
+
+        .login-container label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        .login-container input[type="text"],
+        .login-container input[type="password"],
+        .login-container select,
+        .login-container input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0 20px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+
+        .login-container input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .login-container input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .interface-container {
+            display: none;
+            max-width: 800px;
+            width: 100%;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+        button{
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .interface-container h2 {
+            color: #4CAF50;
+        }
+
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: sticky;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Gerenciamento de Acesso SIGAA</h1>
+    </header>
+    <main>
+        <div class="login-container" id="loginContainer">
+            <h2>Entrar no sistema</h2>
+            <form id="loginForm">
+                <label for="username">Usuário</label>
+                <input type="text" id="username" name="username" required>
+                <label for="password">Senha</label>
+                <input type="password" id="password" name="password" required>
+                <label for="role">Selecione o Perfil:</label>
+                <select id="role" name="role" required>
+                    <option value="">Escolha um perfil</option>
+                    <option value="den">DEN</option>
+                    <option value="coordenador">Coordenador de Curso</option>
+                    <option value="pro_reitoria">Pró-reitoria de Ensino</option>
+                    <option value="registro_academico">Registro Acadêmico</option>
+                </select>
+                <input type="submit" value="Entrar">
+            </form>
+        </div>
+
+        <div class="interface-container" id="denInterface">
+            <h2>Interface DEN</h2>
+            <p>Bem-vindo, você pode gerenciar alocações de disciplinas e visualizar relatórios.</p>
+            <a href="administracao.html"><button>Acessar administracão</button></a>
+            <!-- Add more specific actions for DEN -->
+        </div>
+
+        <div class="interface-container" id="coordenadorInterface">
+            <h2>Interface Coordenador de Curso</h2>
+            <p>Bem-vindo, você pode atribuir professores às disciplinas e gerenciar turmas.</p>
+            <!-- Add more specific actions for Coordenador de Curso -->
+        </div>
+
+        <div class="interface-container" id="proReitoriaInterface">
+            <h2>Interface Pró-reitoria de Ensino</h2>
+            <p>Bem-vindo, você pode aprovar planos de ensino e gerenciar políticas acadêmicas.</p>
+            <!-- Add more specific actions for Pró-reitoria de Ensino -->
+        </div>
+
+        <div class="interface-container" id="registroAcademicoInterface">
+            <h2>Interface Registro Acadêmico</h2>
+            <p>Bem-vindo, você pode gerenciar registros estudantis e emitir certificados.</p>
+            <!-- Add more specific actions for Registro Acadêmico -->
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 IFRS. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.getElementById('loginForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            const role = document.getElementById('role').value;
+
+            document.getElementById('loginContainer').style.display = 'none';
+
+            switch(role) {
+                case 'den':
+                    document.getElementById('denInterface').style.display = 'block';
+                    break;
+                case 'coordenador':
+                    document.getElementById('coordenadorInterface').style.display = 'block';
+                    break;
+                case 'pro_reitoria':
+                    document.getElementById('proReitoriaInterface').style.display = 'block';
+                    break;
+                case 'registro_academico':
+                    document.getElementById('registroAcademicoInterface').style.display = 'block';
+                    break;
+                default:
+                    alert('Perfil inválido');
+            }
+        });
+    </script>
+</body>
+</html>

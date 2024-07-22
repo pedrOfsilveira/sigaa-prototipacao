@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Alocação de Disciplinas</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        main {
+            padding: 20px;
+            flex: 1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+        }
+
+        .allocation-container {
+            max-width: 600px;
+            width: 100%;
+            padding: 20px;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .allocation-container h2 {
+            color: #4CAF50;
+        }
+
+        .allocation-container label {
+            display: block;
+            margin: 10px 0 5px;
+        }
+
+        .allocation-container select,
+        .allocation-container input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0 20px;
+            border: 1px solid #ddd;
+            border-radius: 3px;
+        }
+
+        .allocation-container input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+
+        .allocation-container input[type="submit"]:hover {
+            background-color: #45a049;
+        }
+
+        .success-message {
+            display: none;
+            color: green;
+            margin-top: 20px;
+        }
+
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            position: sticky;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Alocação de Disciplinas</h1>
+    </header>
+    <main>
+        <div class="allocation-container">
+            <h2>Atribuir Professor a Disciplina</h2>
+            <form id="allocationForm">
+                <label for="professor">Selecione o Professor:</label>
+                <select id="professor" name="professor" required>
+                    <option value="">Escolha um professor</option>
+                    <option value="prof1">Professor 1</option>
+                    <option value="prof2">Professor 2</option>
+                    <option value="prof3">Professor 3</option>
+                    <!-- Add more options as needed -->
+                </select>
+
+                <label for="disciplina">Selecione a Disciplina:</label>
+                <select id="disciplina" name="disciplina" required>
+                    <option value="">Escolha uma disciplina</option>
+                    <option value="disc1">Disciplina 1</option>
+                    <option value="disc2">Disciplina 2</option>
+                    <option value="disc3">Disciplina 3</option>
+                    <!-- Add more options as needed -->
+                </select>
+
+                <input type="submit" value="Atribuir">
+            </form>
+            <div class="success-message" id="successMessage">
+                Professor atribuído à disciplina com sucesso!
+            </div>
+        </div>
+    </main>
+    <footer>
+        <p>&copy; 2024 IFRS. Todos os direitos reservados.</p>
+    </footer>
+
+    <script>
+        document.getElementById('allocationForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            // Simulate successful allocation
+            document.getElementById('successMessage').style.display = 'block';
+        });
+    </script>
+</body>
+</html>
