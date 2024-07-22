@@ -12,17 +12,14 @@
             padding: 0;
             text-align: center;
         }
-
         header {
             background-color: #4CAF50;
             color: white;
             padding: 10px 0;
         }
-
         main {
             padding: 20px;
         }
-
         footer {
             background-color: #4CAF50;
             color: white;
@@ -32,13 +29,11 @@
             width: 100%;
             bottom: 0;
         }
-
         .calendar-container {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
         }
-
         .month {
             border: 1px solid #ddd;
             margin: 10px;
@@ -46,27 +41,23 @@
             border-radius: 5px;
             width: 200px;
         }
-
         .month h3 {
             background-color: #4CAF50;
             color: white;
             padding: 5px;
             margin: 0;
         }
-
         .days {
             display: flex;
             flex-wrap: wrap;
             justify-content: start;
             padding: 10px;
         }
-
         .day {
             width: 14.28%;
             padding: 5px;
             box-sizing: border-box;
         }
-
         .day span {
             display: inline-block;
             width: 20px;
@@ -75,35 +66,29 @@
             text-align: center;
             border-radius: 50%;
         }
-
         .day.inactive span {
             color: #ddd;
         }
-
         .day.class-day span {
             background-color: blue;
             color: white;
         }
-
         .day.class-completed span {
             background-color: green;
             color: white;
         }
-
         .day.class-cancelled span {
             background-color: red;
             color: white;
         }
-
         .day.holiday span {
             background-color: yellow;
             color: black;
         }
-
         .button-group {
             text-align: center;
+            margin: 20px 0;
         }
-
         button {
             padding: 10px 15px;
             background-color: #4CAF50;
@@ -113,42 +98,40 @@
             cursor: pointer;
             margin: 5px;
         }
-
         button:hover {
             background-color: #45a049;
         }
-
-        .frequencia {
-            text-align: start;
-            border: 1px solid #ddd;
-            padding: 10px;
-            margin-bottom: 10px;
-            border-radius: 5px;
-        }
-
-        .frequencia h4 {
-            margin: 0;
-            margin-bottom: 10px;
-        }
-
-        .frequencia p {
-            margin: 5px 0;
-        }
-
-        .progress-bar {
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
             width: 100%;
-            background-color: #f0f0f0;
-            border-radius: 5px;
-            overflow: hidden;
-            margin-top: 10px;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
         }
-
-        .progress-bar-inner {
-            height: 20px;
-            background-color: #4CAF50;
-            text-align: center;
-            color: white;
-            line-height: 20px;
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
         }
     </style>
 </head>
@@ -157,19 +140,28 @@
         <h1>Calendário Escolar 2024</h1>
     </header>
     <main>
+        <div class="calendar">
+            <div class="header">
+                <button id="addClassBtn">Adcionar aula</button>
+                <button id="removeClassBtn">Remover Aula</button>
+            </div>
         <div class="frequencia">
             <h4>Aulas Programadas</h4>
             <p>Total de aulas no ano: 60</p>
             <p>% de aulas já ocorridas:</p>
             <div class="progress-bar">
-                <div class="progress-bar-inner" style="width: 50%;">50%</div>
+                <div class="progress-bar-inner">50%</div>
             </div>
         </div>
         <div class="calendar-container">
             <!-- Janeiro -->
+             
             <div class="month">
+                
                 <h3>Janeiro</h3>
+                
                 <div class="days">
+                    
                     <div class="day inactive"><span>1</span></div>
                     <div class="day inactive"><span>2</span></div>
                     <div class="day inactive"><span>3</span></div>
@@ -605,9 +597,127 @@
                 </div>
             </div>
         </div>
+        <div id="addClassModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Adcionar Aula</h2>
+                <form id="addClassForm">
+                    <label for="classDate">(dd-mm-aaaa):</label>
+                    <input type="date" id="classDate" required>
+                    <label for="classType">Tipo de aula:</label>
+                    <select id="classType" required>
+                        <option value="holiday">Feriado</option>
+                        <option value="event">Evento</option>
+                        <option value="meeting">Reunião</option>
+                    </select>
+                    <button type="submit">Adcionar Aula</button>
+                </form>
+            </div>
+        </div>
+    
+        <!-- Remove Class Modal -->
+        <div id="removeClassModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Remover Aula    </h2>
+                <form id="removeClassForm">
+                    <label for="removeClassDate">Date (YYYY-MM-DD):</label>
+                    <input type="date" id="removeClassDate" required>
+                    <button type="submit">Remove Class</button>
+                </form>
+            </div>
+        </div>
         <div class="button-group">
             <a href="VisualizarTurmas.html"><button type="button">Voltar</button></a>
         </div>
     </section>
+    <script>
+ document.addEventListener('DOMContentLoaded', function() {
+    const addClassBtn = document.getElementById('addClassBtn');
+    const removeClassBtn = document.getElementById('removeClassBtn');
+    const addClassModal = document.getElementById('addClassModal');
+    const removeClassModal = document.getElementById('removeClassModal');
+    const closeAddClassModal = addClassModal.getElementsByClassName('close')[0];
+    const closeRemoveClassModal = removeClassModal.getElementsByClassName('close')[0];
+    const addClassForm = document.getElementById('addClassForm');
+    const removeClassForm = document.getElementById('removeClassForm');
+
+    // Function to open the modal
+    function openModal(modal) {
+        modal.style.display = 'block';
+    }
+
+    // Function to close the modal
+    function closeModal(modal) {
+        modal.style.display = 'none';
+    }
+
+    // Open add class modal
+    addClassBtn.onclick = function() {
+        openModal(addClassModal);
+    };
+
+    // Open remove class modal
+    removeClassBtn.onclick = function() {
+        openModal(removeClassModal);
+    };
+
+    // Close the add class modal
+    closeAddClassModal.onclick = function() {
+        closeModal(addClassModal);
+    };
+
+    // Close the remove class modal
+    closeRemoveClassModal.onclick = function() {
+        closeModal(removeClassModal);
+    };
+
+    // Close the modal when clicking outside of it
+    window.onclick = function(event) {
+        if (event.target === addClassModal) {
+            closeModal(addClassModal);
+        } else if (event.target === removeClassModal) {
+            closeModal(removeClassModal);
+        }
+    };
+
+    // Add class function
+    addClassForm.onsubmit = function(event) {
+        event.preventDefault();
+        const classDate = document.getElementById('classDate').value;
+        const classType = document.getElementById('classType').value;
+        const classDay = document.querySelector(`.day span[data-date='${classDate}']`);
+
+        if (classDay) {
+            classDay.className = classType;
+        }
+
+        closeModal(addClassModal);
+    };
+
+    // Remove class function
+    removeClassForm.onsubmit = function(event) {
+        event.preventDefault();
+        const removeClassDate = document.getElementById('removeClassDate').value;
+        const removeClassDay = document.querySelector(`.day span[data-date='${removeClassDate}']`);
+
+        if (removeClassDay) {
+            removeClassDay.className = '';
+        }
+
+        closeModal(removeClassModal);
+    };
+
+    // Example: Assign data-date attributes to the days
+    document.querySelectorAll('.day span').forEach((day, index) => {
+        const date = new Date(2024, 0, index + 1); // Assuming January for simplicity
+        const formattedDate = date.toISOString().split('T')[0]; // Format date as YYYY-MM-DD
+        day.setAttribute('data-date', formattedDate);
+    });
+});
+    
+    </script>
+    </body>
+    </html>
 </body>
 </html>
