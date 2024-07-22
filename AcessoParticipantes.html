@@ -1,0 +1,232 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lista de Participantes</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      font-size: 14px;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 0;
+      text-align: center;
+    }
+
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    nav ul li {
+      display: inline;
+      margin: 0 10px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+    }
+
+    main {
+      padding: 20px;
+      flex-grow: 1;
+    }
+
+    footer {
+      background-color: #4CAF50;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    .button-group {
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+    .font-buttons {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+    }
+
+    .font-buttons button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      margin-left: 5px;
+    }
+
+    .font-buttons button:hover {
+      background-color: #45a049;
+    }
+
+    .participant-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    .participant-table th,
+    .participant-table td {
+      border: 1px solid #ddd;
+      padding: 8px;
+    }
+
+    .participant-table th {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    .participant-table tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    .participant-table tr:hover {
+      background-color: #ddd;
+    }
+
+    .action-buttons button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      margin: 0 5px;
+      font-size: 12px;
+    }
+
+    .action-buttons button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="font-buttons">
+    <button id="increase-font">A+</button>
+    <button id="decrease-font">A-</button>
+  </div>
+
+  <header>
+    <h1>SIGAA - Sistema Integrado de Gestão de Atividades Acadêmicas</h1>
+    <nav>
+      <ul>
+        <li><a href="LoginSigaa.html">Logout</a></li>
+        <li><a href="#modules" id="modules-button">Módulos</a></li>
+        <li><a href="http://www.ufrn.br">Suporte</a></li>
+        <li><a href="boletim.html">Emissão de registros acadêmicos</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Lista de Participantes</h2>
+
+    <h3>Docentes</h3>
+    <table class="participant-table">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Email</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Cristina</td>
+          <td>cristina@empresa.com</td>
+        </tr>
+      </tbody>
+    </table>
+
+    <h3>Discentes</h3>
+    <table class="participant-table">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Ana</td>
+          <td>ana@empresa.com</td>
+          <td class="action-buttons">
+            <button onclick="sendMessage('Ana')">Enviar Mensagem</button>
+            <a href="LancarNotas.html"><button>Lançar Notas</button></a>
+            <a href="#"><button>Emitir Histórico</button></a>
+          </td>
+        </tr>
+        <tr>
+          <td>Beatriz</td>
+          <td>beatriz@empresa.com</td>
+          <td class="action-buttons">
+            <button onclick="sendMessage('Beatriz')">Enviar Mensagem</button>
+            <a href="LancarNotas.html"><button href="LancarNotas.html">Lançar Notas</button></a>
+            <a href="#"><button>Emitir Histórico</button></a>
+          </td>
+        </tr>
+        <tr>
+          <td>Carlos</td>
+          <td>carlos@empresa.com</td>
+          <td class="action-buttons">
+            <button onclick="sendMessage('Carlos')">Enviar Mensagem</button>
+            <a href="LancarNotas.html"><button href="LancarNotas.html">Lançar Notas</button></a>
+            <a href="#"><button>Emitir Histórico</button></a>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+    <br>
+    <div class="button-group">
+      <a href="VisualizarTurmas.html"> <button type="button">Voltar</button></a>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 SIGAA. Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    document.getElementById('increase-font').addEventListener('click', function () {
+      document.body.style.fontSize = 'larger';
+    });
+
+    document.getElementById('decrease-font').addEventListener('click', function () {
+      document.body.style.fontSize = 'smaller';
+    });
+
+    function sendMessage(name) {
+      alert('Enviar mensagem para ' + name + ' ainda não implementado.');
+    }
+  </script>
+</body>
+
+</html>

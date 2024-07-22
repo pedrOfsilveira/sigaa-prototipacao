@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Turmas Anteriores</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            font-size: 14px;
+            display: flex;
+            flex-direction: column;
+            min-height: 100vh;
+        }
+
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+            text-align: center;
+        }
+
+        nav ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        nav ul li {
+            display: inline;
+            margin: 0 10px;
+        }
+
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+
+        main {
+            padding: 20px;
+            display: flex;
+        }
+
+        aside {
+            width: 250px;
+            margin-right: 20px;
+            background-color: #f4f4f4;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        section {
+            flex-grow: 1;
+        }
+
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+            width: 100%;
+            position: relative;
+            bottom: 0;
+        }
+
+        .font-buttons {
+            position: absolute;
+            top: 10px;
+            right: 10px;
+        }
+
+        .font-buttons button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 5px 10px;
+            cursor: pointer;
+            margin-left: 5px;
+        }
+
+        .font-buttons button:hover {
+            background-color: #45a049;
+        }
+
+        .button-group {
+            text-align: center;
+        }
+
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+
+        button:hover {
+            background-color: #45a049;
+        }
+
+        .institutional-data {
+            background-color: #fff;
+            padding: 10px;
+            border: 1px solid #ddd;
+        }
+
+        .institutional-data p {
+            margin: 5px 0;
+        }
+
+        /* Modal styles */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+            padding-top: 60px;
+        }
+
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+
+        .course-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        .course-table th,
+        .course-table td {
+            border: 1px solid #ddd;
+            padding: 8px;
+        }
+
+        .course-table th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        .course-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        .course-table tr:hover {
+            background-color: #ddd;
+        }
+
+        a {
+            color: currentColor;
+            text-decoration: none;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Turmas Anteriores</h1>
+    </header>
+    <main>
+        <section>
+            <div>
+                <h2>2023</h2>
+                <table class="course-table">
+                    <tr>
+                        <th>Disciplina</th>
+                        <th>Turma</th>
+                        <th>Carga Horária</th>
+                        <th>Horário</th>
+                    </tr>
+                    <tr>
+                        <td>RGD-EDF001 - EDUCAÇÃO FÍSICA I</td>
+                        <td>01</td>
+                        <td>66h</td>
+                        <td>2M5 5M3 (21/02/2023 - 09/12/2023)</td>
+                    </tr>
+                    <tr>
+                        <td>RGD-FIL001 - FILOSOFIA I</td>
+                        <td>01</td>
+                        <td>66h</td>
+                        <td>3M12 (21/02/2023 - 09/12/2023)</td>
+                    </tr>
+                    <tr>
+                        <td>RGD-FIS001 - FÍSICA I</td>
+                        <td>01</td>
+                        <td>133h</td>
+                        <td>2M45 (21/02/2023 - 09/12/2023)</td>
+                    </tr>
+                    <tr>
+                        <td>RGD-FUN001 - FUNDAMENTOS DA COMPUTAÇÃO</td>
+                        <td>01</td>
+                        <td>66h</td>
+                        <td>4M34 (21/02/2023 - 09/12/2023)</td>
+                    </tr>
+                    <tr>
+                        <td>RGD-HIS001 - HISTÓRIA I</td>
+                        <td>01</td>
+                        <td>66h</td>
+                        <td>3M45 (21/02/2023 - 09/12/2023)</td>
+                    </tr>
+                    <tr>
+                        <td>RGD-IPR001 - INTRODUÇÃO À PROGRAMAÇÃO</td>
+                        <td>01</td>
+                        <td>166h</td>
+                        <td>6M12345 (21/02/2023 - 09/12/2023)</td>
+                    </tr>
+                    <tr>
+                        <td>RGD-ING001 - LÍNGUA INGLESA</td>
+                        <td>01</td>
+                        <td>66h</td>
+                        <td>2M12 (21/02/2023 - 09/12/2023)</td>
+                    </tr>
+                    <tr>
+                        <td>RGD-POR001 - LÍNGUA PORTUGUESA E LITERATURA I</td>
+                        <td>01</td>
+                        <td>66h</td>
+                        <td>3M23 (21/02/2023 - 09/12/2023)</td>
+                    </tr>
+                </table>
+            </div>
+
+            <div>
+                <h2>2022</h2>
+                <table class="course-table">
+                    <tr>
+                        <th>Disciplina</th>
+                        <th>Turma</th>
+                        <th>Carga Horária</th>
+                        <th>Horário</th>
+                    </tr>
+                    <tr>
+                        <td>RGD-EDF001 - EDUCAÇÃO FÍSICA I</td>
+                        <td>01</td>
+                        <td>66h</td>
+                        <td>2M5 5M3 (21/02/2023 - 09/12/2023)</td>
+                    </tr>
+                    <tr>
+                        <td>RGD-FIL001 - FILOSOFIA I</td>
+                        <td>01</td>
+                        <td>66h</td>
+                        <td>3M12 (21/02/2023 - 09/12/2023)</td>
+                    </tr>
+                    <tr>
+                        <td>RGD-FIS001 - FÍSICA I</td>
+                        <td>01</td>
+                        <td>133h</td>
+                        <td>2M45 (21/02/2023 - 09/12/2023)</td>
+                    </tr>
+                    <tr>
+                        <td>RGD-FUN001 - FUNDAMENTOS DA COMPUTAÇÃO</td>
+                        <td>01</td>
+                        <td>66h</td>
+                        <td>4M34 (21/02/2023 - 09/12/2023)</td>
+                    </tr>
+                    <tr>
+                        <td>RGD-HIS001 - HISTÓRIA I</td>
+                        <td>01</td>
+                        <td>66h</td>
+                        <td>3M45 (21/02/2023 - 09/12/2023)</td>
+                    </tr>
+                    <tr>
+                        <td>RGD-IPR001 - INTRODUÇÃO À PROGRAMAÇÃO</td>
+                        <td>01</td>
+                        <td>166h</td>
+                        <td>6M12345 (21/02/2023 - 09/12/2023)</td>
+                    </tr>
+                    <tr>
+                        <td>RGD-ING001 - LÍNGUA INGLESA</td>
+                        <td>01</td>
+                        <td>66h</td>
+                        <td>2M12 (21/02/2023 - 09/12/2023)</td>
+                    </tr>
+                    <tr>
+                        <td>RGD-POR001 - LÍNGUA PORTUGUESA E LITERATURA I</td>
+                        <td>01</td>
+                        <td>66h</td>
+                        <td>3M23 (21/02/2023 - 09/12/2023)</td>
+                    </tr>
+                </table>
+            </div>
+            <br>
+            <div class="button-group">
+                <a href="telaInicial.html"><button type="button">Voltar</button></a>
+            </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 IFRS - Instituto Federal do Rio Grande do Sul</p>
+    </footer>
+</body>
+</html>

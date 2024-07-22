@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Visualizar Turmas - IFRS</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+
+    header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 0;
+      text-align: center;
+    }
+
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    nav ul li {
+      display: inline;
+      margin: 0 10px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+    }
+
+    main {
+      padding: 20px;
+    }
+
+    section {
+      margin-bottom: 20px;
+    }
+
+    footer {
+      background-color: #4CAF50;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+      position: sticky;
+      width: 100%;
+      bottom: 0;
+    }
+
+    .turma {
+      border: 1px solid #ddd;
+      padding: 10px;
+      margin-bottom: 10px;
+      border-radius: 5px;
+    }
+
+    .turma h3 {
+      margin: 0;
+    }
+
+    .turma p {
+      margin: 5px 0;
+    }
+
+    .turma a {
+      color: currentColor;
+      text-decoration: none;
+      font-weight: bold;
+    }
+
+    .turma a:hover {
+      text-decoration: underline;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 10px 20px;
+      color: white !important;
+      background-color: #4CAF50;
+      text-decoration: none;
+      border-radius: 5px;
+      margin-top: 10px;
+    }
+
+    .btn:hover {
+      background-color: #45a049;
+    }
+
+    #clock {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      color: white;
+      font-size: 18px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>IFRS - Visualizar Turmas</h1>
+    <div id="clock"></div>
+    <nav>
+      <ul>
+        <li><a href="telaInicial.html">Home</a></li>
+        <li><a href="#">Perfil</a></li>
+        <li><a href="LoginSigaa.html">Sair</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section>
+      <h2>Minhas Turmas</h2>
+
+      <div class="turma">
+        <h3>Turma 1</h3>
+        <p>Local: Sala 101</p>
+        <p>Horário: Segundas e Quartas, 10:00 - 12:00</p>
+        <a href="AcessoParticipantes.html" class="btn">Acessar Participantes</a>
+        <a href="CalendarioTurmas.html" class="btn">Calendário</a>
+        <a href="DefinirPresencas.html" class="btn">Definir Presenças</a>
+        <a href="#" class="btn">Mapa de Frequência</a>
+        <a href="#" class="btn">Diário de Classe</a>
+      </div>
+
+      <div class="turma">
+        <h3>Turma 2</h3>
+        <p>Local: Sala 202</p>
+        <p>Horário: Terças e Quintas, 14:00 - 16:00</p>
+        <a href="AcessoParticipantes.html" class="btn">Acessar Participantes</a>
+        <a href="CalendarioTurmas.html" class="btn">Calendário</a>
+        <a href="DefinirPresencas.html" class="btn">Definir Presenças</a>
+        <a href="#" class="btn">Mapa de Frequência</a>
+        <a href="#" class="btn">Diário de Classe</a>
+      </div>
+
+      <div class="turma">
+        <h3>Turma 3</h3>
+        <p>Local: Sala 412</p>
+        <p>Horário: Quartas e Sextas, 8:00 - 10:00</p>
+        <a href="AcessoParticipantes.html" class="btn">Acessar Participantes</a>
+        <a href="CalendarioTurmas.html" class="btn">Calendário</a>
+        <a href="DefinirPresencas.html" class="btn">Definir Presenças</a>
+        <a href="#" class="btn">Mapa de Frequência</a>
+        <a href="#" class="btn">Diário de Classe</a>
+      </div>
+
+      <!-- Adicionar mais turmas conforme necessário -->
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 IFRS - Instituto Federal do Rio Grande do Sul</p>
+  </footer>
+  <script>
+    function updateClock() {
+      const now = new Date();
+      const hours = String(now.getHours()).padStart(2, '0');
+      const minutes = String(now.getMinutes()).padStart(2, '0');
+      const seconds = String(now.getSeconds()).padStart(2, '0');
+      const timeString = `${hours}:${minutes}:${seconds}`;
+      document.getElementById('clock').textContent = timeString;
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock();
+  </script>
+</body>
+
+</html>

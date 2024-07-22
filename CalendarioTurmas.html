@@ -1,0 +1,723 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calendário Escolar 2023</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+        header {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 0;
+        }
+        main {
+            padding: 20px;
+        }
+        footer {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 10px 0;
+        }
+        .calendar-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .month {
+            border: 1px solid #ddd;
+            margin: 10px;
+            padding: 10px;
+            border-radius: 5px;
+            width: 200px;
+        }
+        .month h3 {
+            background-color: #4CAF50;
+            color: white;
+            padding: 5px;
+            margin: 0;
+        }
+        .days {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: start;
+            padding: 10px;
+        }
+        .day {
+            width: 14.28%;
+            padding: 5px;
+            box-sizing: border-box;
+        }
+        .day span {
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            line-height: 20px;
+            text-align: center;
+            border-radius: 50%;
+        }
+        .day.inactive span {
+            color: #ddd;
+        }
+        .day.class-day span {
+            background-color: blue;
+            color: white;
+        }
+        .day.class-completed span {
+            background-color: green;
+            color: white;
+        }
+        .day.class-cancelled span {
+            background-color: red;
+            color: white;
+        }
+        .day.holiday span {
+            background-color: yellow;
+            color: black;
+        }
+        .button-group {
+            text-align: center;
+            margin: 20px 0;
+        }
+        button {
+            padding: 10px 15px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin: 5px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0,0,0);
+            background-color: rgba(0,0,0,0.4);
+            padding-top: 60px;
+        }
+        .modal-content {
+            background-color: #fefefe;
+            margin: 5% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+        }
+        .close {
+            color: #aaa;
+            float: right;
+            font-size: 28px;
+            font-weight: bold;
+        }
+        .close:hover,
+        .close:focus {
+            color: black;
+            text-decoration: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Calendário Escolar 2024</h1>
+    </header>
+    <main>
+        <div class="calendar">
+            <div class="header">
+                <button id="addClassBtn">Adcionar aula</button>
+                <button id="removeClassBtn">Remover Aula</button>
+            </div>
+        <div class="frequencia">
+            <h4>Aulas Programadas</h4>
+            <p>Total de aulas no ano: 60</p>
+            <p>% de aulas já ocorridas:</p>
+            <div class="progress-bar">
+                <div class="progress-bar-inner">50%</div>
+            </div>
+        </div>
+        <div class="calendar-container">
+            <!-- Janeiro -->
+            <div class="month">
+                
+                <h3>Janeiro</h3>
+                
+                <div class="days">
+                    
+                    <div class="day inactive"><span>1</span></div>
+                    <div class="day inactive"><span>2</span></div>
+                    <div class="day inactive"><span>3</span></div>
+                    <div class="day inactive"><span>4</span></div>
+                    <div class="day inactive"><span>5</span></div>
+                    <div class="day inactive"><span>6</span></div>
+                    <div class="day inactive"><span>7</span></div>
+                    <div class="day inactive"><span>8</span></div>
+                    <div class="day inactive"><span>9</span></div>
+                    <div class="day inactive"><span>10</span></div>
+                    <div class="day inactive"><span>11</span></div>
+                    <div class="day inactive"><span>12</span></div>
+                    <div class="day inactive"><span>13</span></div>
+                    <div class="day inactive"><span>14</span></div>
+                    <div class="day inactive"><span>15</span></div>
+                    <div class="day inactive"><span>16</span></div>
+                    <div class="day inactive"><span>17</span></div>
+                    <div class="day inactive"><span>18</span></div>
+                    <div class="day inactive"><span>19</span></div>
+                    <div class="day inactive"><span>20</span></div>
+                    <div class="day inactive"><span>21</span></div>
+                    <div class="day inactive"><span>22</span></div>
+                    <div class="day inactive"><span>23</span></div>
+                    <div class="day inactive"><span>24</span></div>
+                    <div class="day inactive"><span>25</span></div>
+                    <div class="day inactive"><span>26</span></div>
+                    <div class="day inactive"><span>27</span></div>
+                    <div class="day inactive"><span>28</span></div>
+                    <div class="day inactive"><span>29</span></div>
+                    <div class="day inactive"><span>30</span></div>
+                    <div class="day inactive"><span>31</span></div>
+                </div>
+            </div>
+            <!-- Fevereiro -->
+            <div class="month">
+                <h3>Fevereiro</h3>
+                <div class="days">
+                    <div class="day inactive"><span>1</span></div>
+                    <div class="day inactive"><span>2</span></div>
+                    <div class="day inactive"><span>3</span></div>
+                    <div class="day inactive"><span>4</span></div>
+                    <div class="day inactive"><span>5</span></div>
+                    <div class="day"><span>6</span></div>
+                    <div class="day class-day"><span>7</span></div>
+                    <div class="day class-day"><span>8</span></div>
+                    <div class="day"><span>9</span></div>
+                    <div class="day"><span>10</span></div>
+                    <div class="day"><span>11</span></div>
+                    <div class="day"><span>12</span></div>
+                    <div class="day"><span>13</span></div>
+                    <div class="day class-day"><span>14</span></div>
+                    <div class="day class-day"><span>15</span></div>
+                    <div class="day"><span>16</span></div>
+                    <div class="day"><span>17</span></div>
+                    <div class="day"><span>18</span></div>
+                    <div class="day"><span>19</span></div>
+                    <div class="day"><span>20</span></div>
+                    <div class="day class-day"><span>21</span></div>
+                    <div class="day class-day"><span>22</span></div>
+                    <div class="day"><span>23</span></div>
+                    <div class="day"><span>24</span></div>
+                    <div class="day"><span>25</span></div>
+                    <div class="day"><span>26</span></div>
+                    <div class="day"><span>27</span></div>
+                    <div class="day class-day"><span>28</span></div>
+                    <div class="day class-day"><span>29</span></div>
+                </div>
+            </div>
+            <!-- Março -->
+            <div class="month">
+                <h3>Março</h3>
+                <div class="days">
+                    <div class="day"><span>1</span></div>
+                    <div class="day"><span>2</span></div>
+                    <div class="day"><span>3</span></div>
+                    <div class="day class-day"><span>4</span></div>
+                    <div class="day"><span>5</span></div>
+                    <div class="day class-day"><span>6</span></div>
+                    <div class="day"><span>7</span></div>
+                    <div class="day"><span>8</span></div>
+                    <div class="day class-day"><span>9</span></div>
+                    <div class="day class-day"><span>10</span></div>
+                    <div class="day"><span>11</span></div>
+                    <div class="day"><span>12</span></div>
+                    <div class="day"><span>13</span></div>
+                    <div class="day"><span>14</span></div>
+                    <div class="day"><span>15</span></div>
+                    <div class="day"><span>16</span></div>
+                    <div class="day"><span>17</span></div>
+                    <div class="day"><span>18</span></div>
+                    <div class="day class-day"><span>19</span></div>
+                    <div class="day class-day"><span>20</span></div>
+                    <div class="day"><span>21</span></div>
+                    <div class="day"><span>22</span></div>
+                    <div class="day"><span>23</span></div>
+                    <div class="day"><span>24</span></div>
+                    <div class="day"><span>25</span></div>
+                    <div class="day class-day"><span>26</span></div>
+                    <div class="day"><span>27</span></div>
+                    <div class="day class-day"><span>28</span></div>
+                    <div class="day"><span>29</span></div>
+                    <div class="day"><span>30</span></div>
+                    <div class="day class-day"><span>31</span></div>
+                </div>
+            </div>
+            <!-- Abril -->
+            <div class="month">
+                <h3>Abril</h3>
+                <div class="days">
+                    <div class="day"><span>1</span></div>
+                    <div class="day"><span>2</span></div>
+                    <div class="day"><span>3</span></div>
+                    <div class="day"><span>4</span></div>
+                    <div class="day"><span>5</span></div>
+                    <div class="day"><span>6</span></div>
+                    <div class="day"><span>7</span></div>
+                    <div class="day"><span>8</span></div>
+                    <div class="day"><span>9</span></div>
+                    <div class="day"><span>10</span></div>
+                    <div class="day"><span>11</span></div>
+                    <div class="day"><span>12</span></div>
+                    <div class="day class-day"><span>13</span></div>
+                    <div class="day"><span>14</span></div>
+                    <div class="day"><span>15</span></div>
+                    <div class="day"><span>16</span></div>
+                    <div class="day"><span>17</span></div>
+                    <div class="day"><span>18</span></div>
+                    <div class="day"><span>19</span></div>
+                    <div class="day"><span>20</span></div>
+                    <div class="day holiday"><span>21</span></div>
+                    <div class="day"><span>22</span></div>
+                    <div class="day"><span>23</span></div>
+                    <div class="day"><span>24</span></div>
+                    <div class="day"><span>25</span></div>
+                    <div class="day"><span>26</span></div>
+                    <div class="day"><span>27</span></div>
+                    <div class="day"><span>28</span></div>
+                    <div class="day"><span>29</span></div>
+                    <div class="day"><span>30</span></div>
+                </div>
+            </div>
+            <!-- Maio -->
+            <div class="month">
+                <h3>Maio</h3>
+                <div class="days">
+                    <div class="day"><span>1</span></div>
+                    <div class="day"><span>2</span></div>
+                    <div class="day"><span>3</span></div>
+                    <div class="day class-day"><span>4</span></div>
+                    <div class="day"><span>5</span></div>
+                    <div class="day class-day"><span>6</span></div>
+                    <div class="day"><span>7</span></div>
+                    <div class="day"><span>8</span></div>
+                    <div class="day class-day"><span>9</span></div>
+                    <div class="day class-day"><span>10</span></div>
+                    <div class="day"><span>11</span></div>
+                    <div class="day"><span>12</span></div>
+                    <div class="day"><span>13</span></div>
+                    <div class="day"><span>14</span></div>
+                    <div class="day"><span>15</span></div>
+                    <div class="day"><span>16</span></div>
+                    <div class="day"><span>17</span></div>
+                    <div class="day"><span>18</span></div>
+                    <div class="day class-day"><span>19</span></div>
+                    <div class="day class-day"><span>20</span></div>
+                    <div class="day"><span>21</span></div>
+                    <div class="day"><span>22</span></div>
+                    <div class="day"><span>23</span></div>
+                    <div class="day"><span>24</span></div>
+                    <div class="day"><span>25</span></div>
+                    <div class="day class-day"><span>26</span></div>
+                    <div class="day"><span>27</span></div>
+                    <div class="day class-day"><span>28</span></div>
+                    <div class="day"><span>29</span></div>
+                    <div class="day"><span>30</span></div>
+                    <div class="day class-day"><span>31</span></div>
+                </div>
+            </div>
+            <!-- Junho -->
+            <div class="month">
+                <h3>Junho</h3>
+                <div class="days">
+                    <div class="day class-day"><span>1</span></div>
+                    <div class="day"><span>2</span></div>
+                    <div class="day"><span>3</span></div>
+                    <div class="day class-day"><span>4</span></div>
+                    <div class="day class-day"><span>5</span></div>
+                    <div class="day"><span>6</span></div>
+                    <div class="day"><span>7</span></div>
+                    <div class="day"><span>8</span></div>
+                    <div class="day class-day"><span>9</span></div>
+                    <div class="day"><span>10</span></div>
+                    <div class="day"><span>11</span></div>
+                    <div class="day class-day"><span>12</span></div>
+                    <div class="day class-day"><span>13</span></div>
+                    <div class="day"><span>14</span></div>
+                    <div class="day"><span>15</span></div>
+                    <div class="day"><span>16</span></div>
+                    <div class="day class-day"><span>17</span></div>
+                    <div class="day class-day"><span>18</span></div>
+                    <div class="day"><span>19</span></div>
+                    <div class="day"><span>20</span></div>
+                    <div class="day"><span>21</span></div>
+                    <div class="day class-day"><span>22</span></div>
+                    <div class="day"><span>23</span></div>
+                    <div class="day"><span>24</span></div>
+                    <div class="day class-day"><span>25</span></div>
+                    <div class="day"><span>26</span></div>
+                    <div class="day"><span>27</span></div>
+                    <div class="day"><span>28</span></div>
+                    <div class="day class-day"><span>29</span></div>
+                    <div class="day"><span>30</span></div>
+                </div>
+            </div>
+            <!-- Julho -->
+            <div class="month">
+                <h3>Julho</h3>
+                <div class="days">
+                    <div class="day"><span>1</span></div>
+                    <div class="day"><span>2</span></div>
+                    <div class="day"><span>3</span></div>
+                    <div class="day"><span>4</span></div>
+                    <div class="day"><span>5</span></div>
+                    <div class="day"><span>6</span></div>
+                    <div class="day holiday"><span>7</span></div>
+                    <div class="day holiday"><span>8</span></div>
+                    <div class="day holiday"><span>9</span></div>
+                    <div class="day holiday"><span>10</span></div>
+                    <div class="day holiday"><span>11</span></div>
+                    <div class="day holiday"><span>12</span></div>
+                    <div class="day holiday"><span>13</span></div>
+                    <div class="day holiday"><span>14</span></div>
+                    <div class="day holiday"><span>15</span></div>
+                    <div class="day holiday"><span>16</span></div>
+                    <div class="day holiday"><span>17</span></div>
+                    <div class="day holiday"><span>18</span></div>
+                    <div class="day holiday"><span>19</span></div>
+                    <div class="day holiday"><span>20</span></div>
+                    <div class="day holiday"><span>21</span></div>
+                    <div class="day"><span>22</span></div>
+                    <div class="day"><span>23</span></div>
+                    <div class="day class-day"><span>24</span></div>
+                    <div class="day class-day"><span>25</span></div>
+                    <div class="day"><span>26</span></div>
+                    <div class="day"><span>27</span></div>
+                    <div class="day class-day"><span>28</span></div>
+                    <div class="day"><span>29</span></div>
+                    <div class="day"><span>30</span></div>
+                    <div class="day"><span>31</span></div>
+                </div>
+            </div>
+            <!-- Agosto -->
+            <div class="month">
+                <h3>Agosto</h3>
+                <div class="days">
+                    <div class="day"><span>1</span></div>
+                    <div class="day"><span>2</span></div>
+                    <div class="day"><span>3</span></div>
+                    <div class="day"><span>4</span></div>
+                    <div class="day class-cancelled"><span>5</span></div>
+                    <div class="day class-cancelled"><span>6</span></div>
+                    <div class="day class-cancelled"><span>7</span></div>
+                    <div class="day class-cancelled"><span>8</span></div>
+                    <div class="day"><span>9</span></div>
+                    <div class="day"><span>10</span></div>
+                    <div class="day"><span>11</span></div>
+                    <div class="day"><span>12</span></div>
+                    <div class="day"><span>13</span></div>
+                    <div class="day"><span>14</span></div>
+                    <div class="day"><span>15</span></div>
+                    <div class="day"><span>16</span></div>
+                    <div class="day"><span>17</span></div>
+                    <div class="day"><span>18</span></div>
+                    <div class="day"><span>19</span></div>
+                    <div class="day class-day"><span>20</span></div>
+                    <div class="day"><span>21</span></div>
+                    <div class="day"><span>22</span></div>
+                    <div class="day"><span>23</span></div>
+                    <div class="day class-day"><span>24</span></div>
+                    <div class="day class-day"><span>25</span></div>
+                    <div class="day"><span>26</span></div>
+                    <div class="day"><span>27</span></div>
+                    <div class="day"><span>28</span></div>
+                    <div class="day"><span>29</span></div>
+                    <div class="day"><span>30</span></div>
+                    <div class="day"><span>31</span></div>
+                </div>
+            </div>
+            <!-- Setembro -->
+            <div class="month">
+                <h3>Setembro</h3>
+                <div class="days">
+                    <div class="day class-day"><span>1</span></div>
+                    <div class="day"><span>2</span></div>
+                    <div class="day"><span>3</span></div>
+                    <div class="day class-day"><span>4</span></div>
+                    <div class="day class-day"><span>5</span></div>
+                    <div class="day"><span>6</span></div>
+                    <div class="day"><span>7</span></div>
+                    <div class="day"><span>8</span></div>
+                    <div class="day class-day"><span>9</span></div>
+                    <div class="day"><span>10</span></div>
+                    <div class="day"><span>11</span></div>
+                    <div class="day class-day"><span>12</span></div>
+                    <div class="day class-day"><span>13</span></div>
+                    <div class="day"><span>14</span></div>
+                    <div class="day"><span>15</span></div>
+                    <div class="day"><span>16</span></div>
+                    <div class="day class-day"><span>17</span></div>
+                    <div class="day class-day"><span>18</span></div>
+                    <div class="day"><span>19</span></div>
+                    <div class="day"><span>20</span></div>
+                    <div class="day"><span>21</span></div>
+                    <div class="day class-day"><span>22</span></div>
+                    <div class="day"><span>23</span></div>
+                    <div class="day"><span>24</span></div>
+                    <div class="day class-day"><span>25</span></div>
+                    <div class="day"><span>26</span></div>
+                    <div class="day"><span>27</span></div>
+                    <div class="day"><span>28</span></div>
+                    <div class="day class-day"><span>29</span></div>
+                    <div class="day"><span>30</span></div>
+                </div>
+            </div>
+            <!-- Outubro -->
+            <div class="month">
+                <h3>Outubro</h3>
+                <div class="days">
+                    <div class="day"><span>1</span></div>
+                    <div class="day"><span>2</span></div>
+                    <div class="day"><span>3</span></div>
+                    <div class="day class-day"><span>4</span></div>
+                    <div class="day"><span>5</span></div>
+                    <div class="day class-day"><span>6</span></div>
+                    <div class="day"><span>7</span></div>
+                    <div class="day"><span>8</span></div>
+                    <div class="day class-day"><span>9</span></div>
+                    <div class="day class-day"><span>10</span></div>
+                    <div class="day"><span>11</span></div>
+                    <div class="day"><span>12</span></div>
+                    <div class="day"><span>13</span></div>
+                    <div class="day"><span>14</span></div>
+                    <div class="day"><span>15</span></div>
+                    <div class="day"><span>16</span></div>
+                    <div class="day"><span>17</span></div>
+                    <div class="day"><span>18</span></div>
+                    <div class="day class-day"><span>19</span></div>
+                    <div class="day class-day"><span>20</span></div>
+                    <div class="day"><span>21</span></div>
+                    <div class="day"><span>22</span></div>
+                    <div class="day"><span>23</span></div>
+                    <div class="day"><span>24</span></div>
+                    <div class="day"><span>25</span></div>
+                    <div class="day class-day"><span>26</span></div>
+                    <div class="day"><span>27</span></div>
+                    <div class="day class-day"><span>28</span></div>
+                    <div class="day"><span>29</span></div>
+                    <div class="day"><span>30</span></div>
+                    <div class="day class-day"><span>31</span></div>
+                </div>
+            </div>
+            <!-- Novembro -->
+            <div class="month">
+                <h3>Novembro</h3>
+                <div class="days">
+                    <div class="day class-day"><span>1</span></div>
+                    <div class="day"><span>2</span></div>
+                    <div class="day"><span>3</span></div>
+                    <div class="day class-day"><span>4</span></div>
+                    <div class="day class-day"><span>5</span></div>
+                    <div class="day"><span>6</span></div>
+                    <div class="day"><span>7</span></div>
+                    <div class="day"><span>8</span></div>
+                    <div class="day class-day"><span>9</span></div>
+                    <div class="day"><span>10</span></div>
+                    <div class="day"><span>11</span></div>
+                    <div class="day class-day"><span>12</span></div>
+                    <div class="day class-day"><span>13</span></div>
+                    <div class="day"><span>14</span></div>
+                    <div class="day"><span>15</span></div>
+                    <div class="day"><span>16</span></div>
+                    <div class="day class-day"><span>17</span></div>
+                    <div class="day class-day"><span>18</span></div>
+                    <div class="day"><span>19</span></div>
+                    <div class="day"><span>20</span></div>
+                    <div class="day"><span>21</span></div>
+                    <div class="day class-day"><span>22</span></div>
+                    <div class="day"><span>23</span></div>
+                    <div class="day"><span>24</span></div>
+                    <div class="day class-day"><span>25</span></div>
+                    <div class="day"><span>26</span></div>
+                    <div class="day"><span>27</span></div>
+                    <div class="day"><span>28</span></div>
+                    <div class="day class-day"><span>29</span></div>
+                    <div class="day"><span>30</span></div>
+                </div>
+            </div>
+            <!-- Dezembro -->
+            <div class="month">
+                <h3>Dezembro</h3>
+                <div class="days">
+                    <div class="day"><span>1</span></div>
+                    <div class="day"><span>2</span></div>
+                    <div class="day"><span>3</span></div>
+                    <div class="day class-day"><span>4</span></div>
+                    <div class="day"><span>5</span></div>
+                    <div class="day class-day"><span>6</span></div>
+                    <div class="day"><span>7</span></div>
+                    <div class="day"><span>8</span></div>
+                    <div class="day class-day"><span>9</span></div>
+                    <div class="day class-day"><span>10</span></div>
+                    <div class="day"><span>11</span></div>
+                    <div class="day"><span>12</span></div>
+                    <div class="day"><span>13</span></div>
+                    <div class="day"><span>14</span></div>
+                    <div class="day"><span>15</span></div>
+                    <div class="day"><span>16</span></div>
+                    <div class="day"><span>17</span></div>
+                    <div class="day"><span>18</span></div>
+                    <div class="day class-day"><span>19</span></div>
+                    <div class="day class-day"><span>20</span></div>
+                    <div class="day"><span>21</span></div>
+                    <div class="day"><span>22</span></div>
+                    <div class="day"><span>23</span></div>
+                    <div class="day"><span>24</span></div>
+                    <div class="day"><span>25</span></div>
+                    <div class="day class-day"><span>26</span></div>
+                    <div class="day"><span>27</span></div>
+                    <div class="day class-day"><span>28</span></div>
+                    <div class="day"><span>29</span></div>
+                    <div class="day"><span>30</span></div>
+                    <div class="day class-day"><span>31</span></div>
+                </div>
+            </div>
+        </div>
+        <div id="addClassModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Adcionar Aula</h2>
+                <form id="addClassForm">
+                    <label for="classDate">(dd-mm-aaaa):</label>
+                    <input type="date" id="classDate" required>
+                    <label for="classType">Tipo de aula:</label>
+                    <select id="classType" required>
+                        <option value="holiday">Feriado</option>
+                        <option value="event">Evento</option>
+                        <option value="meeting">Reunião</option>
+                    </select>
+                    <button type="submit">Adcionar Aula</button>
+                </form>
+            </div>
+        </div>
+    
+        <!-- Remove Class Modal -->
+        <div id="removeClassModal" class="modal">
+            <div class="modal-content">
+                <span class="close">&times;</span>
+                <h2>Remover Aula    </h2>
+                <form id="removeClassForm">
+                    <label for="removeClassDate">Date (YYYY-MM-DD):</label>
+                    <input type="date" id="removeClassDate" required>
+                    <button type="submit">Remove Class</button>
+                </form>
+            </div>
+        </div>
+        <div class="button-group">
+            <a href="VisualizarTurmas.html"><button type="button">Voltar</button></a>
+        </div>
+        </section>
+    </main>
+    <footer>
+        <p>&copy; 2024 IFRS - Instituto Federal do Rio Grande do Sul</p>
+    </footer>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const addClassBtn = document.getElementById('addClassBtn');
+    const removeClassBtn = document.getElementById('removeClassBtn');
+    const addClassModal = document.getElementById('addClassModal');
+    const removeClassModal = document.getElementById('removeClassModal');
+    const closeAddClassModal = addClassModal.getElementsByClassName('close')[0];
+    const closeRemoveClassModal = removeClassModal.getElementsByClassName('close')[0];
+    const addClassForm = document.getElementById('addClassForm');
+    const removeClassForm = document.getElementById('removeClassForm');
+
+    // Function to open the modal
+    function openModal(modal) {
+        modal.style.display = 'block';
+    }
+
+    // Function to close the modal
+    function closeModal(modal) {
+        modal.style.display = 'none';
+    }
+
+    // Open add class modal
+    addClassBtn.onclick = function() {
+        openModal(addClassModal);
+    };
+
+    // Open remove class modal
+    removeClassBtn.onclick = function() {
+        openModal(removeClassModal);
+    };
+
+    // Close the add class modal
+    closeAddClassModal.onclick = function() {
+        closeModal(addClassModal);
+    };
+
+    // Close the remove class modal
+    closeRemoveClassModal.onclick = function() {
+        closeModal(removeClassModal);
+    };
+
+    // Close the modal when clicking outside of it
+    window.onclick = function(event) {
+        if (event.target === addClassModal) {
+            closeModal(addClassModal);
+        } else if (event.target === removeClassModal) {
+            closeModal(removeClassModal);
+        }
+    };
+
+    // Add class function
+    addClassForm.onsubmit = function(event) {
+        event.preventDefault();
+        const classDate = document.getElementById('classDate').value;
+        const classType = document.getElementById('classType').value;
+        const classDay = document.querySelector(`.day span[data-date='${classDate}']`);
+
+        if (classDay) {
+            classDay.className = classType;
+        }
+
+        closeModal(addClassModal);
+    };
+
+    // Remove class function
+    removeClassForm.onsubmit = function(event) {
+        event.preventDefault();
+        const removeClassDate = document.getElementById('removeClassDate').value;
+        const removeClassDay = document.querySelector(`.day span[data-date='${removeClassDate}']`);
+
+        if (removeClassDay) {
+            removeClassDay.className = '';
+        }
+
+        closeModal(removeClassModal);
+    };
+
+    // Example: Assign data-date attributes to the days
+    document.querySelectorAll('.day span').forEach((day, index) => {
+        const date = new Date(2024, 0, index + 1); // Assuming January for simplicity
+        const formattedDate = date.toISOString().split('T')[0]; // Format date as YYYY-MM-DD
+        day.setAttribute('data-date', formattedDate);
+    });
+});
+    
+    </script>
+    </body>
+    </html>
+</body>
+</html>
