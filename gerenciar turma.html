@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerenciamento de Turmas</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background-color: #f0f0f0;
+    }
+
+    header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 0;
+      text-align: center;
+      position: fixed;
+      width: 100%;
+      top: 0;
+      left: 0;
+      z-index: 1000;
+    }
+
+    main {
+      padding: 20px;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      height: 100vh;
+      margin-top: 60px;
+    }
+
+    .container {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 8px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      width: 800px;
+    }
+
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .button-group {
+      display: flex;
+      justify-content: space-between;
+      margin-bottom: 20px;
+    }
+
+    button {
+      padding: 10px 15px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 5px;
+      flex: 1;
+      text-align: center;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    th, td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: left;
+    }
+
+    th {
+      background-color: #f2f2f2;
+    }
+
+    .action-buttons {
+      display: flex;
+      justify-content: space-around;
+    }
+
+    .action-buttons button {
+      flex: none;
+      margin: 0 5px;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Gerenciamento de Turmas</h1>
+  </header>
+
+  <main>
+    <div class="container">
+      <h1>Turmas</h1>
+      <div class="button-group">
+       <a href="VisualizarTurmas.html"> <button>Acessar Turmas</button></a>
+        <button>Criar Turma</button>
+        <button>Editar Turma</button>
+        <button>Excluir Turma</button>
+      </div>
+      <table>
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Nome da Turma</th>
+            <th>Professor Responsável</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>Turma A</td>
+            <td>Professor X</td>
+            <td class="action-buttons">
+              <button>Editar</button>
+              <button>Excluir</button>
+            </td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>Turma B</td>
+            <td>Professor Y</td>
+            <td class="action-buttons">
+              <button>Editar</button>
+              <button>Excluir</button>
+            </td>
+          </tr>
+          <tr>
+            <td>3</td>
+            <td>Turma C</td>
+            <td>Professor Z</td>
+            <td class="action-buttons">
+              <button>Editar</button>
+              <button>Excluir</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </main>
+</body>
+
+</html>
