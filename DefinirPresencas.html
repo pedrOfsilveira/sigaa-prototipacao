@@ -136,8 +136,8 @@
     <main>
         <div class="button-group">
             <button onclick="generateSpreadsheet()">Gerar Planilha</button>
-            <button onclick="generateSpreadsheet()">Presença para todos</button>
-            <button onclick="generateSpreadsheet()">Ausência para todos</button>
+            <button onclick="setAttendanceForAll(true)">Presença para todos</button>
+            <button onclick="setAttendanceForAll(false)">Ausência para todos</button>
         </div>
         <table class="participant-table" id="studentsTable">
             <thead>
@@ -200,6 +200,13 @@
                     <!-- Adicione mais checkboxes conforme necessário -->
                 `;
                 tableBody.appendChild(row);
+            });
+        }
+
+        function setAttendanceForAll(isPresent) {
+            const checkboxes = document.querySelectorAll('#studentsTable tbody input[type="checkbox"]');
+            checkboxes.forEach(checkbox => {
+                checkbox.checked = isPresent;
             });
         }
 
