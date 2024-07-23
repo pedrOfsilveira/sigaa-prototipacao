@@ -1,5 +1,6 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="pt-BR">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -51,7 +52,8 @@
         }
 
         .allocation-container select,
-        .allocation-container input[type="submit"] {
+        .allocation-container input[type="submit"],
+        .allocation-container button {
             width: 100%;
             padding: 10px;
             margin: 10px 0 20px;
@@ -59,14 +61,16 @@
             border-radius: 3px;
         }
 
-        .allocation-container input[type="submit"] {
+        .allocation-container input[type="submit"],
+        .allocation-container button {
             background-color: #4CAF50;
             color: white;
             border: none;
             cursor: pointer;
         }
 
-        .allocation-container input[type="submit"]:hover {
+        .allocation-container input[type="submit"]:hover,
+        .allocation-container button:hover {
             background-color: #45a049;
         }
 
@@ -83,8 +87,13 @@
             padding: 10px 0;
             position: sticky;
         }
+
+        .professor-extra {
+            display: none;
+        }
     </style>
 </head>
+
 <body>
     <header>
         <h1>Alocação de Disciplinas</h1>
@@ -93,15 +102,6 @@
         <div class="allocation-container">
             <h2>Atribuir Professor a Disciplina</h2>
             <form id="allocationForm">
-                <label for="professor">Selecione o Professor:</label>
-                <select id="professor" name="professor" required>
-                    <option value="">Escolha um professor</option>
-                    <option value="prof1">Professor 1</option>
-                    <option value="prof2">Professor 2</option>
-                    <option value="prof3">Professor 3</option>
-                    <!-- Add more options as needed -->
-                </select>
-
                 <label for="disciplina">Selecione a Disciplina:</label>
                 <select id="disciplina" name="disciplina" required>
                     <option value="">Escolha uma disciplina</option>
@@ -111,10 +111,38 @@
                     <!-- Add more options as needed -->
                 </select>
 
+                <label>Tipo de Professor:</label>
+                <label><input type="radio" name="tipoProfessor" value="unico" checked> Único</label>
+                <label><input type="radio" name="tipoProfessor" value="colegiado"> Colegiado</label>
+
+                <label for="professor">Selecione o Professor:</label>
+                <select id="professor" name="professor" required>
+                    <option value="">Escolha um professor</option>
+                    <option value="prof1">Professor 1</option>
+                    <option value="prof2">Professor 2</option>
+                    <option value="prof3">Professor 3</option>
+                    <!-- Add more options as needed -->
+                </select>
+
+                <div class="professor-extra" id="professorExtra">
+                    <label for="professor2">Selecione o Segundo Professor:</label>
+                    <select id="professor2" name="professor2">
+                        <option value="">Escolha um professor</option>
+                        <option value="prof1">Professor 1</option>
+                        <option value="prof2">Professor 2</option>
+                        <option value="prof3">Professor 3</option>
+                        <!-- Add more options as needed -->
+                    </select>
+                </div>
+
+                <div class="professor-extra" id="additionalProfessors"></div>
+                <button type="button" id="addProfessorButton" class="professor-extra">Adicionar Mais
+                    Professores</button>
+
                 <input type="submit" value="Atribuir">
             </form>
             <div class="success-message" id="successMessage">
-                Professor atribuído à disciplina com sucesso!
+                Professor(es) atribuído(s) à disciplina com sucesso!
             </div>
         </div>
     </main>
@@ -123,11 +151,46 @@
     </footer>
 
     <script>
-        document.getElementById('allocationForm').addEventListener('submit', function(event) {
+        document.querySelectorAll('input[name="tipoProfessor"]').forEach(radio => {
+            radio.addEventListener('change', function () {
+                const professorExtra = document.getElementById('professorExtra');
+                const addProfessorButton = document.getElementById('addProfessorButton');
+                if (this.value === 'colegiado') {
+                    professorExtra.style.display = 'block';
+                    addProfessorButton.style.display = 'block';
+                } else {
+                    professorExtra.style.display = 'none';
+                    addProfessorButton.style.display = 'none';
+                    document.getElementById('additionalProfessors').innerHTML = '';
+                }
+            });
+        });
+
+        let professorCount = 2;
+
+        document.getElementById('addProfessorButton').addEventListener('click', function () {
+            professorCount++;
+            const additionalProfessors = document.getElementById('additionalProfessors');
+            const newProfessorSelect = document.createElement('div');
+            newProfessorSelect.innerHTML = `
+                <label for="professor${professorCount}">Selecione o Professor ${professorCount}:</label>
+                <select id="professor${professorCount}" name="professor${professorCount}">
+                    <option value="">Escolha um professor</option>
+                    <option value="prof1">Professor 1</option>
+                    <option value="prof2">Professor 2</option>
+                    <option value="prof3">Professor 3</option>
+                    <!-- Add more options as needed -->
+                </select>
+            `;
+            additionalProfessors.appendChild(newProfessorSelect);
+        });
+
+        document.getElementById('allocationForm').addEventListener('submit', function (event) {
             event.preventDefault();
             // Simulate successful allocation
             document.getElementById('successMessage').style.display = 'block';
         });
     </script>
 </body>
+
 </html>

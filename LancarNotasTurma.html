@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Lançar Notas da Turma</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      font-size: 14px;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 0;
+      text-align: center;
+    }
+
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    nav ul li {
+      display: inline;
+      margin: 0 10px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+    }
+
+    main {
+      padding: 20px;
+      flex-grow: 1;
+    }
+
+    footer {
+      background-color: #4CAF50;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    .grade-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 20px;
+    }
+
+    .grade-table th,
+    .grade-table td {
+      border: 1px solid #ddd;
+      padding: 8px;
+      text-align: center;
+    }
+
+    .grade-table th {
+      background-color: #4CAF50;
+      color: white;
+    }
+
+    .grade-table tr:nth-child(even) {
+      background-color: #f2f2f2;
+    }
+
+    .grade-table tr:hover {
+      background-color: #ddd;
+    }
+
+    .button-group {
+      text-align: center;
+      margin-top: 20px;
+    }
+
+    button {
+      padding: 10px 15px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      margin: 5px;
+    }
+
+    button:hover {
+      background-color: #45a049;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>Lançar Notas da Turma</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="VisualizarTurmas.html">Voltar</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <h2>Notas dos Alunos</h2>
+    <table class="grade-table">
+      <thead>
+        <tr>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>1º Trimestre</th>
+          <th>2º Trimestre</th>
+          <th>3º Trimestre</th>
+          <th>Nota Final</th>
+          <th>Status</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>Ana</td>
+          <td>ana@empresa.com</td>
+          <td><input type="text" id="ana-trim1" name="ana-trim1" size="4" oninput="calculateFinalGrade('ana')"></td>
+          <td><input type="text" id="ana-trim2" name="ana-trim2" size="4" oninput="calculateFinalGrade('ana')"></td>
+          <td><input type="text" id="ana-trim3" name="ana-trim3" size="4" oninput="calculateFinalGrade('ana')"></td>
+          <td id="ana-final"></td>
+          <td id="ana-status"></td>
+        </tr>
+        <tr>
+          <td>Beatriz</td>
+          <td>beatriz@empresa.com</td>
+          <td><input type="text" id="beatriz-trim1" name="beatriz-trim1" size="4"
+              oninput="calculateFinalGrade('beatriz')"></td>
+          <td><input type="text" id="beatriz-trim2" name="beatriz-trim2" size="4"
+              oninput="calculateFinalGrade('beatriz')"></td>
+          <td><input type="text" id="beatriz-trim3" name="beatriz-trim3" size="4"
+              oninput="calculateFinalGrade('beatriz')"></td>
+          <td id="beatriz-final"></td>
+          <td id="beatriz-status"></td>
+        </tr>
+        <tr>
+          <td>Carlos</td>
+          <td>carlos@empresa.com</td>
+          <td><input type="text" id="carlos-trim1" name="carlos-trim1" size="4" oninput="calculateFinalGrade('carlos')">
+          </td>
+          <td><input type="text" id="carlos-trim2" name="carlos-trim2" size="4" oninput="calculateFinalGrade('carlos')">
+          </td>
+          <td><input type="text" id="carlos-trim3" name="carlos-trim3" size="4" oninput="calculateFinalGrade('carlos')">
+          </td>
+          <td id="carlos-final"></td>
+          <td id="carlos-status"></td>
+        </tr>
+      </tbody>
+    </table>
+
+    <div class="button-group">
+      <button type="button" onclick="saveGrades()">Salvar Notas</button>
+      <button type="button" onclick="cancel()">Cancelar</button>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 SIGAA. Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    function calculateFinalGrade(student) {
+      const trim1 = parseFloat(document.getElementById(`${student}-trim1`).value) || 0;
+      const trim2 = parseFloat(document.getElementById(`${student}-trim2`).value) || 0;
+      const trim3 = parseFloat(document.getElementById(`${student}-trim3`).value) || 0;
+
+      const finalGrade = ((trim1 + trim2 + trim3) / 3).toFixed(2);
+      document.getElementById(`${student}-final`).innerText = finalGrade;
+
+      const status = finalGrade >= 7 ? 'Aprovado' : 'Reprovado';
+      document.getElementById(`${student}-status`).innerText = status;
+    }
+
+    function saveGrades() {
+      // Placeholder function to save grades. Implement the actual save functionality here.
+      alert('Notas salvas com sucesso!');
+    }
+
+    function cancel() {
+      // Placeholder function to cancel and clear inputs. Implement the actual cancel functionality here.
+      if (confirm('Tem certeza que deseja cancelar? Todas as alterações serão perdidas.')) {
+        const inputs = document.querySelectorAll('input[type="text"]');
+        inputs.forEach(input => input.value = '');
+
+        const finals = document.querySelectorAll('td[id$="-final"]');
+        finals.forEach(final => final.innerText = '');
+
+        const statuses = document.querySelectorAll('td[id$="-status"]');
+        statuses.forEach(status => status.innerText = '');
+      }
+    }
+  </script>
+</body>
+
+</html>

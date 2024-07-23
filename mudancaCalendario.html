@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gestão Acadêmica IFRS</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      font-size: 14px;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background-color: #4CAF50;
+      color: white;
+      padding: 10px 0;
+      text-align: center;
+    }
+
+    nav ul {
+      list-style-type: none;
+      padding: 0;
+    }
+
+    nav ul li {
+      display: inline;
+      margin: 0 10px;
+    }
+
+    nav ul li a {
+      color: white;
+      text-decoration: none;
+    }
+
+    main {
+      padding: 20px;
+      flex-grow: 1;
+    }
+
+    footer {
+      background-color: #4CAF50;
+      color: white;
+      text-align: center;
+      padding: 10px 0;
+    }
+
+    .form-container {
+      max-width: 600px;
+      margin: 0 auto;
+      background-color: #f2f2f2;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    }
+
+    .form-container h2 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+
+    .form-group {
+      margin-bottom: 15px;
+    }
+
+    .form-group label {
+      display: block;
+      margin-bottom: 5px;
+    }
+
+    .form-group input,
+    .form-group textarea,
+    .form-group select {
+      width: 100%;
+      padding: 8px;
+      box-sizing: border-box;
+    }
+
+    .form-group textarea {
+      resize: vertical;
+    }
+
+    .form-actions {
+      text-align: center;
+    }
+
+    .form-actions button {
+      background-color: #4CAF50;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      cursor: pointer;
+      margin: 0 5px;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    .form-actions button:hover {
+      background-color: #45a049;
+    }
+
+    .action-list {
+      margin-top: 20px;
+    }
+
+    .action-item {
+      background-color: #fff;
+      padding: 10px;
+      border: 1px solid #ddd;
+      border-radius: 5px;
+      margin-bottom: 10px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .action-item button {
+      background-color: #ff4c4c;
+      color: white;
+      border: none;
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    .action-item button:hover {
+      background-color: #ff1c1c;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>IFRS - Gestão Acadêmica</h1>
+    <nav>
+      <ul>
+        <li><a href="LoginSigaa.html">Logout</a></li>
+        <li><a href="#modules" id="modules-button">Módulos</a></li>
+        <li><a href="http://www.ifrs.edu.br">Suporte</a></li>
+        <li><a href="boletim.html">Emissão de registros acadêmicos</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <div class="form-container">
+      <h2>Gestão Acadêmica</h2>
+      <form id="academicManagementForm">
+        <div class="form-group">
+          <label for="actionType">Tipo de Ação:</label>
+          <select id="actionType" name="actionType" required>
+            <option value="holiday">Feriado</option>
+            <option value="event">Evento</option>
+            <option value="other">Outro</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="actionDate">Data:</label>
+          <input type="date" id="actionDate" name="actionDate" required>
+        </div>
+
+        <div class="form-group">
+          <label for="actionDescription">Descrição:</label>
+          <textarea id="actionDescription" name="actionDescription" rows="4" required></textarea>
+        </div>
+
+        <div class="form-actions">
+          <button type="button" onclick="addAction()">Adicionar</button>
+        </div>
+      </form>
+
+      <div class="action-list" id="actionList">
+        <!-- Actions will be listed here -->
+      </div>
+
+      <div class="form-actions">
+        <button type="button" onclick="confirmActions()">Confirmar Ações</button>
+        <button type="button" onclick="resetActions()">Limpar Ações</button>
+      </div>
+    </div>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 IFRS. Todos os direitos reservados.</p>
+  </footer>
+
+  <script>
+    const actionList = document.getElementById('actionList');
+    let actions = [];
+
+    function addAction() {
+      const actionType = document.getElementById('actionType').value;
+      const actionDate = document.getElementById('actionDate').value;
+      const actionDescription = document.getElementById('actionDescription').value;
+
+      if (actionType && actionDate && actionDescription) {
+        const action = { type: actionType, date: actionDate, description: actionDescription };
+        actions.push(action);
+        renderActions();
+      } else {
+        alert('Por favor, preencha todos os campos.');
+      }
+    }
+
+    function removeAction(index) {
+      actions.splice(index, 1);
+      renderActions();
+    }
+
+    function renderActions() {
+      actionList.innerHTML = '';
+      actions.forEach((action, index) => {
+        const actionItem = document.createElement('div');
+        actionItem.className = 'action-item';
+        actionItem.innerHTML = `
+          <span>${action.type} - ${action.date}: ${action.description}</span>
+          <button onclick="removeAction(${index})">Remover</button>
+        `;
+        actionList.appendChild(actionItem);
+      });
+    }
+
+    function confirmActions() {
+      if (actions.length > 0) {
+        if (confirm('Deseja confirmar as ações?')) {
+          // Add your code here to save the actions
+          alert('Ações confirmadas com sucesso!');
+          resetActions();
+        }
+      } else {
+        alert('Nenhuma ação para confirmar.');
+      }
+    }
+
+    function resetActions() {
+      actions = [];
+      renderActions();
+    }
+  </script>
+</body>
+
+</html>
